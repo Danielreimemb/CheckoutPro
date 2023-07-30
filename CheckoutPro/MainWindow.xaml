@@ -13,9 +13,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
-        
-        
+
+
+
         <!-- 
         
         - palette.info.light #64b5f6
@@ -23,52 +23,74 @@
         - palette.info.dark  #1976d2
         
         -->
-        
-        <Grid Grid.Row="0" Background="White">
-            <!-- Header -->
-            
-            <TextBlock Text="CheckoutPro" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right">
-                <Grid>
-                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                    <Icons:SymbolIcon Symbol="Settings" />
-                </Grid>
-            </Button>
-            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0">
-                <Grid>
-                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                    <Icons:SymbolIcon Symbol="Info" />
-                </Grid>
-            </Button>
-            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0">
-                <Grid>
-                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                    <Icons:SymbolIcon Symbol="Person" />
-                </Grid>
-            </Button>
+        <Grid Grid.Row="0" Background="#F2F3F9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <!-- Header -->
+            <Grid Grid.Column="0">
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left">
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
+                        <Icons:SymbolIcon Symbol="Home" />
+                    </Grid>
+                </Button>
+            </Grid>
+
+
+            <TextBlock Text="CheckoutPro" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
+
+            <Grid Grid.Column="2">
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right">
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
+                        <Icons:SymbolIcon Symbol="Settings" />
+                    </Grid>
+                </Button>
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0">
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
+                        <Icons:SymbolIcon Symbol="Info" />
+                    </Grid>
+                </Button>
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0">
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                        <Icons:SymbolIcon Symbol="Person" />
+                    </Grid>
+                </Button>
+            </Grid>
+
+
+
 
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-55" Color="LightGray" />
             </Grid.Effect>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="5">
             <!-- Main -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="450" MaxWidth="600" MinWidth="200"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                
+
                 <Grid Grid.Row="0">
                     <TextBlock Text="Produkte" FontSize="18" FontWeight="Medium"/>
                 </Grid>
@@ -104,12 +126,12 @@
             </Grid>
 
             <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
-            
+
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
@@ -120,7 +142,7 @@
 
 
 
-                <GroupBox Header="Funktionen" Grid.Row="3">
+                <GroupBox Header="Funktionen" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
                             <Grid>
@@ -144,6 +166,32 @@
                     </StackPanel>
                 </GroupBox>
 
+                <GroupBox Grid.Row="2" Header="Einkauf" >
+                    <TextBox Text="1x Bratwurscht" BorderBrush="Transparent"/>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="Drucken" >
+                    <StackPanel Orientation="Horizontal">
+                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="110" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,60,0"/>
+                                <TextBlock Text="C" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                            </Grid>
+                        </Button>
+                        <Button BorderThickness="0" Width="182" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
+                                <Icons:SymbolIcon Symbol="Print" Margin="0,0,90,0"/>
+                                <TextBlock Text="Drucken" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+
+
+                </GroupBox>
+
+
             </Grid>
 
 
@@ -152,6 +200,8 @@
 
         <Grid Grid.Row="2">
             <!-- Footer -->
+            <Rectangle Fill="#F2F3F9"/>
+            <TextBlock Text="Software von Daniel Reim - V1.0.0.0" Padding="5,0"/>
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-5" Color="LightGray" />
             </Grid.Effect>
