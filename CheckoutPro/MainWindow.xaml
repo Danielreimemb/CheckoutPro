@@ -1,0 +1,161 @@
+﻿<Window x:Class="CheckoutPro.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckoutPro"
+        xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
+        mc:Ignorable="d"
+        Title="CheckoutPro" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        
+        
+        
+        <!-- 
+        
+        - palette.info.light #64b5f6
+        - palette.info.main  #2196f3
+        - palette.info.dark  #1976d2
+        
+        -->
+        
+        <Grid Grid.Row="0" Background="White">
+            <!-- Header -->
+            
+            <TextBlock Text="CheckoutPro" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right">
+                <Grid>
+                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                    <Icons:SymbolIcon Symbol="Settings" />
+                </Grid>
+            </Button>
+            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0">
+                <Grid>
+                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                    <Icons:SymbolIcon Symbol="Info" />
+                </Grid>
+            </Button>
+            <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0">
+                <Grid>
+                    <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                    <Icons:SymbolIcon Symbol="Person" />
+                </Grid>
+            </Button>
+
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-55" Color="LightGray" />
+            </Grid.Effect>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <!-- Main -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Produkte" FontSize="18" FontWeight="Medium"/>
+                </Grid>
+
+                <GroupBox Header="Funktionen" Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="AddCircle" />
+                            </Grid>
+                        </Button>
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Edit" />
+                            </Grid>
+                        </Button>
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Delete" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Produkte" Grid.Row="2">
+
+                </GroupBox>
+
+
+            </Grid>
+
+            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
+            
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="Zusammenfassung" FontSize="18" FontWeight="Medium"/>
+                </Grid>
+
+
+
+
+                <GroupBox Header="Funktionen" Grid.Row="3">
+                    <StackPanel Orientation="Horizontal">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Print" />
+                            </Grid>
+                        </Button>
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Calculator" />
+
+                            </Grid>
+                        </Button>
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Delete" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </GroupBox>
+
+            </Grid>
+
+
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <!-- Footer -->
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-5" Color="LightGray" />
+            </Grid.Effect>
+        </Grid>
+
+    </Grid>
+</Window>
