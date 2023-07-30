@@ -119,7 +119,24 @@
                 </GroupBox>
 
                 <GroupBox Header="Produkte" Grid.Row="2">
+                    <ListBox d:ItemsSource="{d:SampleData}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Rectangle Width="80" Height="30" Fill="GreenYellow" RadiusX="5" RadiusY="5" Grid.RowSpan="3"/>
+                                    <TextBlock Text="Name" Grid.Row="0"/>
+                                    <TextBlock Text="Price" Grid.Row="1"/>
 
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </GroupBox>
 
 
