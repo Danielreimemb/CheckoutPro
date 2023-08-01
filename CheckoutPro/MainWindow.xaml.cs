@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro
 {
@@ -23,6 +24,39 @@ namespace CheckoutPro
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+            Produkt produkt = new Produkt();
+            produkt.Name = "neues Produkt";
+            produkt.Preis = 10.0;
+            produkt.Farbe = "#1976d2";
+            produkt.Gruppe = "Gruppe 1";
+
+            ListboxMainWindowProducts.Items.Add(produkt);
+
+        }
+
+        private void ListboxMainWindowProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListboxMainWindowProducts.SelectedItem != null)
+            {
+                Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
+
+
+                MessageBox.Show(produkt.Name + produkt.Preis.ToString() + produkt.Gruppe);
+
+            }
+        }
+
+        private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListboxMainWindowProducts.SelectedItem  != null)
+            {
+                ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
+            }
         }
     }
 }
