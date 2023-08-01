@@ -5,34 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckoutPro.Forms"
         mc:Ignorable="d"
-        Title="WindowPurchaseProduct" Height="360" Width="240">
+        Title="WindowPurchaseProduct" Height="360" Width="240" Topmost="True" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <TextBlock Text="0.0" FontSize="36" HorizontalAlignment="Center" Grid.Row="0"/>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Button Content="Relativ" Grid.Column="0"/>
-                <Button Content="Absolut" Grid.Column="1"/>
+        <Grid Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            </Grid>
-
+            <TextBlock Text="1x" FontSize="36" HorizontalAlignment="Center" Grid.Column="0"/>
+            <Button Content="C" Grid.Column="1"/>
         </Grid>
         
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -54,9 +45,7 @@
             <Button Content="7" Grid.Row="2" Grid.Column="0"/>
             <Button Content="8" Grid.Row="2" Grid.Column="1"/>
             <Button Content="9" Grid.Row="2" Grid.Column="2"/>
-            <Button Content="C" Grid.Row="3" Grid.Column="0"/>
             <Button Content="0" Grid.Row="3" Grid.Column="1"/>
-            <Button Content="CE" Grid.Row="3" Grid.Column="2"/>
         </Grid>
 
         <Grid Grid.Row="2">
@@ -64,8 +53,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Abbruch" Grid.Column="0"/>
-            <Button Content="Ok" Grid.Column="1"/>
+            <Button Content="Abbruch" Grid.Column="0" Background="Red"/>
+            <Button Content="Ok" Grid.Column="1" Background="Green"/>
 
         </Grid>   
         

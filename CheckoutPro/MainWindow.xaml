@@ -109,7 +109,7 @@
                                 <Icons:SymbolIcon Symbol="Edit" />
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Delete" />
@@ -216,7 +216,7 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="3" Header="Summe">
-                    <TextBlock Text="0.00€"/>
+                    <TextBlock Text="0.00€" FontSize="28" HorizontalAlignment="Right"/>
                 </GroupBox>
 
                 <GroupBox Grid.Row="4" Header="Drucken" >

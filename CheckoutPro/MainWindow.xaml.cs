@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckoutPro.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,9 +29,10 @@ namespace CheckoutPro
 
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
         {
+            
 
             Produkt produkt = new Produkt();
-            produkt.Name = "neues Produkt";
+            produkt.Name = "Produkt";
             produkt.Preis = 10.0;
             produkt.Farbe = "#1976d2";
             produkt.Gruppe = "Gruppe 1";
@@ -43,6 +45,9 @@ namespace CheckoutPro
         {
             if (ListboxMainWindowProducts.SelectedItem != null)
             {
+                WindowPurchaseProduct windowPurchaseProduct = new WindowPurchaseProduct();
+                windowPurchaseProduct.Show();
+
                 Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
 
 
