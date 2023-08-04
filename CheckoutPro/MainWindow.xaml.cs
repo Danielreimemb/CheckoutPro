@@ -63,5 +63,14 @@ namespace CheckoutPro
                 ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
             }
         }
+
+
+
+        private void ProductAdd()
+        {
+
+        }
+
+
     }
 }

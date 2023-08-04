@@ -171,12 +171,14 @@ namespace CheckoutPro.Forms
 
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
+            // Send Value to MainWindow
 
+            
         }
 
         private void Button_Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
