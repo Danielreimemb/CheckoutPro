@@ -66,6 +66,9 @@ namespace CheckoutPro
 
             ListboxMainWindowProducts.Items.Add(produkt);
 
+            WindowProductItem productItem = new WindowProductItem();
+            productItem.Show();
+
         }
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
@@ -144,7 +147,6 @@ namespace CheckoutPro
         #endregion
 
 
-
         // -- Methods --
         #region Methods
 
@@ -212,6 +214,5 @@ namespace CheckoutPro
 
         #endregion
 
-        
     }
 }
