@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,7 +62,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Forms\WindowPrintSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\WindowPurchaseProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\WindowSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\WindowSoftwareInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\WindowUserSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,8 +91,20 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Class\ClassProduct.cs" />
+    <Compile Include="Forms\WindowPrintSettings.xaml.cs">
+      <DependentUpon>WindowPrintSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\WindowPurchaseProduct.xaml.cs">
       <DependentUpon>WindowPurchaseProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WindowSettings.xaml.cs">
+      <DependentUpon>WindowSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WindowSoftwareInfo.xaml.cs">
+      <DependentUpon>WindowSoftwareInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WindowUserSettings.xaml.cs">
+      <DependentUpon>WindowUserSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

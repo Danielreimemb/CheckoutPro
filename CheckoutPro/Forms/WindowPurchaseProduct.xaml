@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckoutPro.Forms"
         mc:Ignorable="d"
-        Title="WindowPurchaseProduct" Height="360" Width="240" Topmost="True" ResizeMode="NoResize">
+        Title="WindowPurchaseProduct" Height="450" Width="360" Topmost="True" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -16,11 +16,11 @@
         <Grid Grid.Row="0" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Name="TextBoxValueProduct" Text="1x" FontSize="36" HorizontalAlignment="Center" Grid.Column="0"/>
-            <Button Content="C" Grid.Column="1" Click="Button_C_Click"/>
+            <TextBlock Name="TextBoxValueProduct" Text="1x" FontSize="42" HorizontalAlignment="Center" Grid.Column="0"/>
+            <Button Content="C" Grid.Column="1" Click="Button_C_Click" Height="75"/>
         </Grid>
         
         <Grid Grid.Row="1" Margin="5">

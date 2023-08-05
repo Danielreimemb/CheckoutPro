@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CheckoutPro"
         xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="CheckoutPro" Height="450" Width="800">
+        Title="CheckoutPro" Height="450" Width="800" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -47,22 +47,28 @@
             <TextBlock Text="CheckoutPro" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
 
             <Grid Grid.Column="2">
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right">
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
                         <Icons:SymbolIcon Symbol="Settings" />
                     </Grid>
                 </Button>
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0">
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
                         <Icons:SymbolIcon Symbol="Info" />
                     </Grid>
                 </Button>
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0">
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,132,0">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
                         <Icons:SymbolIcon Symbol="Person" />
+                    </Grid>
+                </Button>
+                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                        <Icons:SymbolIcon Symbol="ArrowExit" />
                     </Grid>
                 </Button>
             </Grid>
@@ -103,7 +109,7 @@
                                 <Icons:SymbolIcon Symbol="AddCircle" />
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Edit" />
@@ -195,7 +201,7 @@
                                 <Icons:SymbolIcon Symbol="Print" />
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonCalculator_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Calculator" />
@@ -221,14 +227,14 @@
 
                 <GroupBox Grid.Row="4" Header="Drucken" >
                     <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
                             <Grid>
                                 <Rectangle Width="110" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,60,0"/>
                                 <TextBlock Text="C" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="182" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="182" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
                             <Grid>
                                 <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
                                 <Icons:SymbolIcon Symbol="Print" Margin="0,0,90,0"/>
