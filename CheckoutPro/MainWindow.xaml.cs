@@ -31,14 +31,26 @@ namespace CheckoutPro
 
 
         #region MainWindow Header Buttons
+
+        private void ButtonHeaderSettings_Click(object sender, EventArgs e)
+        {
+            //Settings
+        }
+        private void ButtonHeaderInfo_Click(object sender, RoutedEventArgs e)
+        {
+            //Info
+        }
+        private void ButtonHeaderUser_Click(object sender, RoutedEventArgs e)
+        {
+            //User
+        }
         private void ButtonExitApplication_Click(object sender, RoutedEventArgs e)
         {
             // Funktion Fehlt noch
         }
 
+
         #endregion
-
-
 
         #region MainWindow Produkte Buttons über Listbox
 
@@ -71,9 +83,6 @@ namespace CheckoutPro
 
         #endregion
 
-
-
-
         #region MainWindow Zusammenfassung Buttons über Zusammenfassung DataGrid
 
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
@@ -101,8 +110,6 @@ namespace CheckoutPro
 
         #endregion
 
-
-
         #region MainWindow Background Worker
 
 
@@ -120,6 +127,19 @@ namespace CheckoutPro
             }
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "My Application", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+
+                System.Windows.Forms.Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+
 
         #endregion
 
@@ -127,6 +147,13 @@ namespace CheckoutPro
 
         // -- Methods --
         #region Methods
+
+        private void InitialStartup()
+        {
+
+        }
+
+
 
         private void SaveProductstoFile()
         {
@@ -178,18 +205,13 @@ namespace CheckoutPro
 
 
 
+
+
+
+
+
         #endregion
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "My Application", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-            {
-
-                System.Windows.Forms.Application.Exit();
-            }
-            else {
-                e.Cancel = true;
-            }
-        }
+        
     }
 }
