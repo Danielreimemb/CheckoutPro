@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,7 @@ namespace CheckoutPro
         public MainWindow()
         {
             InitializeComponent();
+            NormalStartup();
         }
 
 
@@ -56,7 +58,10 @@ namespace CheckoutPro
 
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
         {
-            
+            WindowProductItem productItem = new WindowProductItem();
+            productItem.Show();
+
+            // Neues Produkt
 
             Produkt produkt = new Produkt();
             produkt.Name = "Produkt";
@@ -66,13 +71,14 @@ namespace CheckoutPro
 
             ListboxMainWindowProducts.Items.Add(produkt);
 
-            WindowProductItem productItem = new WindowProductItem();
-            productItem.Show();
+            
 
         }
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
+
+
 
         }
 
@@ -82,6 +88,12 @@ namespace CheckoutPro
             {
                 ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
             }
+        }
+
+        private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
+        {
+            SaveProductstoFile();
+            System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
         }
 
         #endregion
@@ -155,27 +167,46 @@ namespace CheckoutPro
 
         }
 
+        private void NormalStartup()
+        {
+            LoadProductsfromFile();
+        }
+
+
 
 
         private void SaveProductstoFile()
         {
-            // CSV File 
-            // Anzahl;ProductName;Preis;Gruppe
-            // Path is Root
-            // Name is Store
-
-
-
-
+            StreamWriter myOutputStream = new StreamWriter("Database.csv");
+            foreach (Produkt produkt in ListboxMainWindowProducts.Items)
+            {
+                myOutputStream.WriteLine(produkt.Name + ";" +produkt.Gruppe + ";"+produkt.Farbe + ";" + produkt.Preis);
+            }
+            myOutputStream.Close();
         }
 
         private void LoadProductsfromFile()
         {
-            // CSV File 
-            // Anzahl;ProductName;Preis;Gruppe
-            // Path is Root
-            // Name is Store
+            string curFile = @"Database.csv";
+            if (File.Exists(curFile))
+            {
+                StreamReader myInputStream = new StreamReader("Database.csv");
+                while (!myInputStream.EndOfStream)
+                {
+                    string line = myInputStream.ReadLine();
+                    string[] values = line.Split(';');
+                    Produkt produkt = new Produkt(values[0], values[1], values[2], Convert.ToDouble(values[3]));
+                    ListboxMainWindowProducts.Items.Add(produkt);
+                }
+                myInputStream.Close();
+            }
+            else 
+            {
+                System.Windows.Forms.MessageBox.Show("Datenbank konnte nicht gefunden werden");
+            }
 
+
+                
 
         }
 
@@ -214,5 +245,6 @@ namespace CheckoutPro
 
         #endregion
 
+        
     }
 }

@@ -121,6 +121,12 @@
                                 <Icons:SymbolIcon Symbol="Delete" />
                             </Grid>
                         </Button>
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Save" />
+                            </Grid>
+                        </Button>
                     </StackPanel>
                 </GroupBox>
 
@@ -226,7 +232,7 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="4" Header="Drucken" >
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
                             <Grid>
                                 <Rectangle Width="110" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
