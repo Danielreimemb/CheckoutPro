@@ -20,15 +20,16 @@ using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro
 {
-    /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow mainWindowInstance;
+
+
         public MainWindow()
         {
             InitializeComponent();
             NormalStartup();
+            mainWindowInstance = this;
         }
 
 
@@ -71,15 +72,15 @@ namespace CheckoutPro
 
             WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element hinzufügen";
 
-            // Neues Produkt
+            //// Neues Produkt
 
-            Produkt produkt = new Produkt();
-            produkt.Name = "Produkt";
-            produkt.Preis = 10.0;
-            produkt.Farbe = "#1976d2";
-            produkt.Gruppe = "Gruppe 1";
+            //Produkt produkt = new Produkt();
+            //produkt.Name = "Produkt";
+            //produkt.Preis = 10.0;
+            //produkt.Farbe = "#1976d2";
+            //produkt.Gruppe = "Gruppe 1";
 
-            ListboxMainWindowProducts.Items.Add(produkt);
+            //ListboxMainWindowProducts.Items.Add(produkt);
 
             
 

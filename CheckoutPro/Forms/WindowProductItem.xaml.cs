@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro.Forms
 {
@@ -26,6 +27,23 @@ namespace CheckoutPro.Forms
             InitializeComponent();
 
             windowProductItemInstance = this;
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            Produkt produkt = new Produkt();
+            produkt.Name = TextBoxName.Text;
+            produkt.Preis = Convert.ToDouble(TextBoxPreis.Text);
+            produkt.Farbe = ColorpickerItemColor.SelectedColor.ToString();
+            produkt.Gruppe = ComboBoxGruppe.Text;
+
+            MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);
+            this.Close();
         }
     }
 }
