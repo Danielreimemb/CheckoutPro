@@ -37,18 +37,26 @@ namespace CheckoutPro
         private void ButtonHeaderSettings_Click(object sender, EventArgs e)
         {
             //Settings
+            WindowSettings windowSettings = new WindowSettings();
+            windowSettings.Show();
+
         }
         private void ButtonHeaderInfo_Click(object sender, RoutedEventArgs e)
         {
             //Info
+            WindowSoftwareInfo windowSoftwareInfo = new WindowSoftwareInfo();
+            windowSoftwareInfo.Show();
         }
         private void ButtonHeaderUser_Click(object sender, RoutedEventArgs e)
         {
             //User
+            WindowUserInfo windowUserInfo = new WindowUserInfo();
+            windowUserInfo.Show();
         }
         private void ButtonExitApplication_Click(object sender, RoutedEventArgs e)
         {
             // Funktion Fehlt noch
+            this.Close();
         }
 
 

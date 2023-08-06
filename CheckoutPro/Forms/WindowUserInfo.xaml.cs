@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CheckoutPro.Forms
 {
     /// <summary>
-    /// Interaktionslogik für WindowUserSettings.xaml
+    /// Interaktionslogik für WindowUserInfo.xaml
     /// </summary>
-    public partial class WindowUserSettings : Window
+    public partial class WindowUserInfo : Window
     {
-        public WindowUserSettings()
+        public WindowUserInfo()
         {
             InitializeComponent();
         }

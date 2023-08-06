@@ -88,7 +88,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\WindowUserSettings.xaml">
+    <Page Include="Forms\WindowUserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,8 +116,8 @@
     <Compile Include="Forms\WindowSoftwareInfo.xaml.cs">
       <DependentUpon>WindowSoftwareInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\WindowUserSettings.xaml.cs">
-      <DependentUpon>WindowUserSettings.xaml</DependentUpon>
+    <Compile Include="Forms\WindowUserInfo.xaml.cs">
+      <DependentUpon>WindowUserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

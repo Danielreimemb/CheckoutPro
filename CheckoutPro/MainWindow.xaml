@@ -201,7 +201,7 @@
 
                 <GroupBox Header="Funktionen" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Print" />
@@ -214,7 +214,7 @@
 
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Delete" />

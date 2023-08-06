@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckoutPro.Forms"
         mc:Ignorable="d"
-        Title="WindowPrintSettings" Height="450" Width="800">
+        Title="WindowPrintSettings" Height="450" Width="800" ResizeMode="NoResize" Topmost="True">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Rectangle Fill="#F2F3F9" Height="50"/>
+            <TextBlock Text="Drucker Einstellungen" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
+        </Grid>
+        
+        
+        
+        
         
     </Grid>
 </Window>
