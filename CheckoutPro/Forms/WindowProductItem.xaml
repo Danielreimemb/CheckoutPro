@@ -32,16 +32,16 @@
             </Grid.RowDefinitions>
 
             <GroupBox Grid.Row="0" Header="Name">
-                <TextBox Text=""/>
+                <TextBox Text="" Name="TextBoxName"/>
             </GroupBox>
             <GroupBox Grid.Row="1" Header="Preis">
-                <TextBox Text=""/>
+                <TextBox Text="" Name="TextBoxPreis"/>
             </GroupBox>
             <GroupBox Grid.Row="2" Header="Gruppe">
-                <ComboBox IsEditable="True" Text="Sammlung"/>
+                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe"/>
             </GroupBox>
             <GroupBox Grid.Row="3" Header="Vorschau">
-                
+                <!-- Local Preview -->
             </GroupBox>
             
             
@@ -51,7 +51,7 @@
 
         <Grid Grid.Row="1" Grid.Column="1" Margin="5">
             <GroupBox Header="Farbe">
-                <colorpicker:StandardColorPicker x:Name="main" Width="200" Height="200" ShowAlpha="False" SelectedColor="Blue" />
+                <colorpicker:StandardColorPicker x:Name="ColorpickerItemColor" Width="200" Height="200" ShowAlpha="False" SelectedColor="Blue"  />
             </GroupBox>
         </Grid>
 
