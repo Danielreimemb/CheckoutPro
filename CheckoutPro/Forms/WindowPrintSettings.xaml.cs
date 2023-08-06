@@ -23,5 +23,10 @@ namespace CheckoutPro.Forms
         {
             InitializeComponent();
         }
+
+        private void ButtonPrintTestPage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
