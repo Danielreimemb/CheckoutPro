@@ -20,7 +20,7 @@
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Rectangle Fill="#F2F3F9" Height="50"/>
-            <TextBlock Text="Produkt hinzufügen" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
+            <TextBlock Text="Produkt hinzufügen" Name="TextblockHeader" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
             
         <Grid Grid.Row="1" Grid.Column="0" Margin="5">

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CheckoutPro"
         xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="CheckoutPro" Height="450" Width="800" Closing="Window_Closing">
+        Title="CheckoutPro" Height="650" Width="950" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>

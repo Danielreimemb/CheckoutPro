@@ -69,6 +69,8 @@ namespace CheckoutPro
             WindowProductItem productItem = new WindowProductItem();
             productItem.Show();
 
+            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element hinzufügen";
+
             // Neues Produkt
 
             Produkt produkt = new Produkt();
@@ -85,7 +87,18 @@ namespace CheckoutPro
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
+            WindowProductItem productItem = new WindowProductItem();
+            productItem.Show();
 
+            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
+
+            //Produkt produkt = new Produkt();
+            //produkt.Name = "Produkt";
+            //produkt.Preis = 10.0;
+            //produkt.Farbe = "#1976d2";
+            //produkt.Gruppe = "Gruppe 1";
+
+            //ListboxMainWindowProducts.Items.Add(produkt);
 
 
         }

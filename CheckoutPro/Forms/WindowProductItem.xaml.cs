@@ -19,9 +19,13 @@ namespace CheckoutPro.Forms
     /// </summary>
     public partial class WindowProductItem : Window
     {
+        public static WindowProductItem windowProductItemInstance;
+
         public WindowProductItem()
         {
             InitializeComponent();
+
+            windowProductItemInstance = this;
         }
     }
 }
