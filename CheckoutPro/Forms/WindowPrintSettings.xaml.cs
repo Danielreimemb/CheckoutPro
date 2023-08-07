@@ -28,5 +28,10 @@ namespace CheckoutPro.Forms
         {
 
         }
+
+        private void ComboboxPrinter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
