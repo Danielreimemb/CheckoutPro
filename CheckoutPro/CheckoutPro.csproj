@@ -101,6 +101,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Class\ClassProduct.cs" />
+    <Compile Include="Class\ClassQuittung.cs" />
     <Compile Include="Forms\WindowPrintSettings.xaml.cs">
       <DependentUpon>WindowPrintSettings.xaml</DependentUpon>
     </Compile>

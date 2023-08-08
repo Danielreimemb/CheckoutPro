@@ -137,14 +137,15 @@
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <Rectangle Width="120" Height="70" Fill="{Binding Farbe}" RadiusX="5" RadiusY="5" Grid.RowSpan="3" Stroke="Gray"/>
+                                    <Rectangle Width="160" Height="90" Fill="{Binding Farbe}" RadiusX="5" RadiusY="5" Grid.RowSpan="3" Stroke="Gray"/>
                                     <TextBlock Text="{Binding Name}" Grid.Row="0" Padding="5,2"/>
-                                    <TextBlock Text="{Binding Preis}" Grid.Row="1" Padding="5,2"/>
-                                    <TextBlock Text="{Binding Gruppe}" Grid.Row="2" Padding="5,2"/>
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" >
+                                        <TextBlock Text="{Binding Preis}" FontSize="18" FontWeight="Bold"/>
+                                        <TextBlock Text="€" FontSize="18" FontWeight="Bold"/>
+                                    </StackPanel>
 
                                 </Grid>
                             </DataTemplate>
@@ -152,29 +153,9 @@
                         </ListBox.ItemTemplate>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" />
+                                <WrapPanel Orientation="Vertical" />
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
-
-                        <ListBox.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Name}" Margin="15,20,15,0" FontSize="16" />
-                                            <Rectangle Height="1" Width="auto" Fill="Black" Margin="15,0"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                            </GroupStyle>
-                        </ListBox.GroupStyle>
-                        <ListBox.Resources>
-                            <CollectionViewSource x:Key="ItemGroups" Source="{Binding}">
-                                <CollectionViewSource.GroupDescriptions>
-                                    <PropertyGroupDescription PropertyName="Group" />
-                                </CollectionViewSource.GroupDescriptions>
-                            </CollectionViewSource>
-                        </ListBox.Resources>
                     </ListBox>
                 </GroupBox>
 
@@ -224,7 +205,16 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="2" Header="Einkauf" >
-                    <TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent"/>
+                    <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
+                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="60"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
+                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="100"/>
+                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
                 </GroupBox>
 
                 <GroupBox Grid.Row="3" Header="Summe">

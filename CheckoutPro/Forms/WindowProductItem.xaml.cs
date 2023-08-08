@@ -38,9 +38,9 @@ namespace CheckoutPro.Forms
         {
             Produkt produkt = new Produkt();
             produkt.Name = TextBoxName.Text;
-            produkt.Preis = Convert.ToDouble(TextBoxPreis.Text);
-            produkt.Farbe = ColorpickerItemColor.SelectedColor.ToString();
-            produkt.Gruppe = ComboBoxGruppe.Text;
+            produkt.Preis = TextBoxPreis.Text;
+            produkt.BackgroundColor = ColorpickerItemBackgroundColor.SelectedColor.ToString();
+            produkt.Group = ComboBoxGruppe.Text;
 
             MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);
             this.Close();

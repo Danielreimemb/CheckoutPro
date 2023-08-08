@@ -93,15 +93,6 @@ namespace CheckoutPro
 
             WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
 
-            //Produkt produkt = new Produkt();
-            //produkt.Name = "Produkt";
-            //produkt.Preis = 10.0;
-            //produkt.Farbe = "#1976d2";
-            //produkt.Gruppe = "Gruppe 1";
-
-            //ListboxMainWindowProducts.Items.Add(produkt);
-
-
         }
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -130,7 +121,10 @@ namespace CheckoutPro
 
         private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
         {
-
+            if(DataGridPurchase.SelectedItem != null)
+            {
+                DataGridPurchase.Items.Remove(DataGridPurchase.SelectedItem);
+            }
         }
 
         private void ButtonCalculator_Click(object sender, RoutedEventArgs e)
@@ -161,8 +155,118 @@ namespace CheckoutPro
 
                 //MessageBox.Show(produkt.Name + produkt.Preis.ToString() + produkt.Gruppe);
 
+                int AnzahlfromPurchaseProductWindow = 1;
+
+
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis;
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis;
+
+
+                //TextBoxCurrentPurchase.Text += AnzahlfromPurchaseProductWindow.ToString() + "x " + produkt.Name.ToString() + " " + produkt.Preis.ToString() + "\r";
+
+
+                ListboxMainWindowProducts.SelectedItem = null;
             }
         }
+
+
+
+
+        private string FormatPurchaselLine(string ProductName, string ProductPrice, string ProductCount)
+        {
+            // Product Name = asdflnbsaödfmäasdf
+            // Product Price = 3,45€
+            // Product Count = 12x
+
+
+
+
+
+            int QuittungsTextmaxlenght = 36;
+
+            // 2x TextTextTextTextTextText    3,00€
+            // 123456789012345678901234567890123456
+
+
+            // 2x TextTextTextTextTextTextTextTextT
+            // TextTextTextTextTextTextTextTextText
+            //                                3,00€
+            //
+            //
+
+
+            // 6 Zeichen für Preis frei
+            // 3 Zeichen für Anzahl / 4 Zeichen
+            
+
+
+            if(ProductCount.Length == 2)
+            {
+                int VerfügbareLängeZeile = QuittungsTextmaxlenght - 3;
+                int VerwendeteLängePreis = ProductPrice.Length + 1;
+                int VerfügbareLängeName = VerfügbareLängeZeile - VerwendeteLängePreis;
+
+                if (ProductName.Length <= VerfügbareLängeName) //Name passt in Zeile
+                {
+                    
+
+
+                    return ProductCount + " " + ProductName + "{0,8}" + ProductPrice;
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+            if(ProductCount.Length == 3)
+            {
+                int VerfügbareLängeText = QuittungsTextmaxlenght - 4;
+            }
+
+
+
+
+                
+
+
+
+            return "";
+        }
+
+
+
+        private string FormatPurchaseQuittung(string text)
+        {
+            return "";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -202,7 +306,7 @@ namespace CheckoutPro
             StreamWriter myOutputStream = new StreamWriter("Database.csv");
             foreach (Produkt produkt in ListboxMainWindowProducts.Items)
             {
-                myOutputStream.WriteLine(produkt.Name + ";" +produkt.Gruppe + ";"+produkt.Farbe + ";" + produkt.Preis);
+                myOutputStream.WriteLine(produkt.Name + ";" +produkt.Group + ";"+produkt.BackgroundColor + ";" + produkt.Preis);
             }
             myOutputStream.Close();
         }
@@ -217,7 +321,7 @@ namespace CheckoutPro
                 {
                     string line = myInputStream.ReadLine();
                     string[] values = line.Split(';');
-                    Produkt produkt = new Produkt(values[0], values[1], values[2], Convert.ToDouble(values[3]));
+                    Produkt produkt = new Produkt(values[0], values[1], values[2], values[3]);
                     ListboxMainWindowProducts.Items.Add(produkt);
                 }
                 myInputStream.Close();

@@ -6,7 +6,7 @@
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:local="clr-namespace:CheckoutPro.Forms" xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="WindowProductItem" Height="550" Width="640" ResizeMode="NoResize" Topmost="True">
+        Title="WindowProductItem" Height="580" Width="720" ResizeMode="NoResize" Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,7 +18,7 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
             <Rectangle Fill="#F2F3F9" Height="50"/>
             <TextBlock Text="Produkt hinzufügen" Name="TextblockHeader" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
@@ -28,19 +28,39 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <GroupBox Grid.Row="0" Header="Name">
+
+            <GroupBox Grid.Row="0" Header="ID">
+                <TextBox Text="" Name="TextBoxID"/>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="Name">
                 <TextBox Text="" Name="TextBoxName"/>
             </GroupBox>
-            <GroupBox Grid.Row="1" Header="Preis">
-                <TextBox Text="" Name="TextBoxPreis"/>
+            <GroupBox Grid.Row="2" Header="Beschreibung">
+                <TextBox Text="" Name="TextBoxDesc"/>
             </GroupBox>
-            <GroupBox Grid.Row="2" Header="Gruppe">
-                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe"/>
+            <GroupBox Grid.Row="3" Header="Icon">
+                <TextBox Text="" Name="TextBoxIcon"/>
             </GroupBox>
-            <GroupBox Grid.Row="3" Header="Vorschau">
+            <GroupBox Grid.Row="4" Header="Preis">
+                <Grid>
+                    <TextBox Text="0,00" Name="TextBoxPreis" Padding="5"/>
+                    <TextBlock Text="€" HorizontalAlignment="Right" Padding="5,5" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="5" Header="Gruppe">
+                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe">
+                    <ComboBoxItem>
+                        <TextBlock Text="Gutscheine"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </GroupBox>
+            <GroupBox Grid.Row="6" Header="Vorschau">
                 <!-- Local Preview -->
             </GroupBox>
             
@@ -48,14 +68,26 @@
         </Grid>
 
 
+        <TabControl Grid.Column="1" Grid.Row="1" Margin="5"  Width="250">
+            <TabItem Header="Hintergrund">
+                <GroupBox Header="Hintergrundfarbe">
+                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightGoldenrodYellow"  />
+                </GroupBox>
+            </TabItem>
+            
+            <TabItem Header="Rahmenfarbe">
+                <GroupBox Header="Rahmenfarbe">
+                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightCyan"  />
+                </GroupBox>
+            </TabItem>
 
-        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
-            <GroupBox Header="Farbe">
-                <colorpicker:StandardColorPicker x:Name="ColorpickerItemColor" Width="200" Height="200" ShowAlpha="False" SelectedColor="Blue"  />
-            </GroupBox>
-        </Grid>
+        </TabControl>
 
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" HorizontalAlignment="Right">
+
+        
+        
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
