@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckoutPro.Forms" xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="WindowPurchaseProduct" Height="520" Width="480" Topmost="True" ResizeMode="NoResize">
+        Title="WindowPurchaseProduct" Height="520" Width="640" Topmost="True" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="240"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
@@ -27,16 +27,29 @@
 
         <Grid Grid.Row="2" Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="..." Name="TextBlockProductName" Grid.Row="0"/>
-            <TextBlock Text="..." Name="TextBlockProductBeschreibung" Grid.Row="1"/>
-            <TextBlock Text="..." Name="TextBlockProductPreis" Grid.Row="2"/>
-            <TextBlock Text="..." Name="TextBlockProductPreisSumme" Grid.Row="3"/>
+
+            <GroupBox Header="Name" Grid.Row="0">
+                <TextBlock Text="Produktname" Name="TextBlockProductName"  FontSize="18" FontWeight="Medium" HorizontalAlignment="Center"/>
+
+            </GroupBox>
+
+            <GroupBox Header="Beschreibung" Grid.Row="1">
+                <TextBlock Text="Produkt Beschreibung" Name="TextBlockProductBeschreibung"/>
+
+            </GroupBox>
+            
+            <GroupBox Header="Einzelpreis" Grid.Row="2">
+                <TextBlock Text="0,00€" Name="TextBlockProductPreis" HorizontalAlignment="Center" />
+            </GroupBox>
+            
+            <GroupBox Header="Summe" Grid.Row="3">
+                <TextBlock Text="0,00€" Name="TextBlockProductPreisSumme" HorizontalAlignment="Center" />
+            </GroupBox>
             
             
             

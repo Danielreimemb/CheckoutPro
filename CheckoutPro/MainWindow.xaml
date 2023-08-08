@@ -136,15 +136,18 @@
                             <DataTemplate>
                                 <Grid>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <Rectangle Width="160" Height="90" Fill="{Binding Farbe}" RadiusX="5" RadiusY="5" Grid.RowSpan="3" Stroke="Gray"/>
-                                    <TextBlock Text="{Binding Name}" Grid.Row="0" Padding="5,2"/>
-                                    <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" >
+                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" RadiusX="5" RadiusY="5" Grid.RowSpan="3"/>
+                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="16" FontWeight="Medium" HorizontalAlignment="Center" Margin="20,10,20,10"/>
+                                    <TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="20,10,20,20" >
                                         <TextBlock Text="{Binding Preis}" FontSize="18" FontWeight="Bold"/>
-                                        <TextBlock Text="€" FontSize="18" FontWeight="Bold"/>
+                                        <TextBlock Text=" €" FontSize="18" FontWeight="Bold"/>
                                     </StackPanel>
 
                                 </Grid>

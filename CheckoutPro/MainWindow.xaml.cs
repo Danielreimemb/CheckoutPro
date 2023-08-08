@@ -160,9 +160,10 @@ namespace CheckoutPro
 
                 WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
                 WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis;
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis;
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString();
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString();
 
+                WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
 
                 //TextBoxCurrentPurchase.Text += AnzahlfromPurchaseProductWindow.ToString() + "x " + produkt.Name.ToString() + " " + produkt.Preis.ToString() + "\r";
 
@@ -306,7 +307,7 @@ namespace CheckoutPro
             StreamWriter myOutputStream = new StreamWriter("Database.csv");
             foreach (Produkt produkt in ListboxMainWindowProducts.Items)
             {
-                myOutputStream.WriteLine(produkt.Name + ";" +produkt.Group + ";"+produkt.BackgroundColor + ";" + produkt.Preis);
+                myOutputStream.WriteLine(produkt.ID + ";" + produkt.Name + ";" + produkt.Desc + ";" + produkt.Icon + ";" + produkt.Preis.ToString() + ";" + produkt.BackgroundColor + ";" + produkt.BorderColor + ";" + produkt.Group ) ;
             }
             myOutputStream.Close();
         }
@@ -321,7 +322,7 @@ namespace CheckoutPro
                 {
                     string line = myInputStream.ReadLine();
                     string[] values = line.Split(';');
-                    Produkt produkt = new Produkt(values[0], values[1], values[2], values[3]);
+                    Produkt produkt = new Produkt(values[0], values[1], values[2], values[3], Convert.ToDouble(values[4]), values[5], values[6], values[7]);
                     ListboxMainWindowProducts.Items.Add(produkt);
                 }
                 myInputStream.Close();

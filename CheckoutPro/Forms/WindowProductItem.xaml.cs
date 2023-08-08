@@ -37,9 +37,13 @@ namespace CheckoutPro.Forms
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             Produkt produkt = new Produkt();
+            produkt.ID = TextBoxID.Text;
             produkt.Name = TextBoxName.Text;
-            produkt.Preis = TextBoxPreis.Text;
+            produkt.Desc = TextBoxDesc.Text;
+            produkt.Icon = TextBoxIcon.Text;
+            produkt.Preis = Convert.ToDouble(TextBoxPreis.Text);
             produkt.BackgroundColor = ColorpickerItemBackgroundColor.SelectedColor.ToString();
+            produkt.BorderColor = ColorpickerItemBorderColor.SelectedColor.ToString();
             produkt.Group = ComboBoxGruppe.Text;
 
             MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);

@@ -16,12 +16,15 @@ using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro.Forms
 {
-    /// <summary>
-    /// Interaktionslogik für WindowPurchaseProduct.xaml
-    /// </summary>
     public partial class WindowPurchaseProduct : Window
     {
         public static WindowPurchaseProduct windowPurchaseProductinstance;
+        public int ProductNumber;
+        public double ProductPrice;
+
+        bool firstdigit = false;
+
+
 
         public WindowPurchaseProduct()
         {
@@ -30,7 +33,7 @@ namespace CheckoutPro.Forms
             windowPurchaseProductinstance = this;
         }
 
-        bool firstdigit = false;
+        
 
         private void Button_1_Click(object sender, RoutedEventArgs e)
         {
@@ -38,13 +41,18 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = "1x";
                 firstdigit = true;
+
             }
             else
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x","") + "1x";
+
+                
             }
 
-            UpdateSumme();
+            MethodInputChanged();
+
+
         }
 
         private void Button_2_Click(object sender, RoutedEventArgs e)
@@ -59,7 +67,8 @@ namespace CheckoutPro.Forms
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "2x";
             }
 
-            UpdateSumme();
+            MethodInputChanged();
+
 
         }
 
@@ -74,7 +83,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "3x";
             }
-            UpdateSumme();
+
+            MethodInputChanged();
 
         }
 
@@ -89,7 +99,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "4x";
             }
-            UpdateSumme();
+
+            MethodInputChanged();
 
         }
 
@@ -104,7 +115,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "5x";
             }
-            UpdateSumme();
+
+            MethodInputChanged();
 
         }
 
@@ -119,7 +131,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "6x";
             }
-            UpdateSumme();
+
+            MethodInputChanged();
 
         }
         private void Button_7_Click(object sender, RoutedEventArgs e)
@@ -133,8 +146,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "7x";
             }
-            UpdateSumme();
 
+            MethodInputChanged();
 
         }
         private void Button_8_Click(object sender, RoutedEventArgs e)
@@ -148,7 +161,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "8x";
             }
-            UpdateSumme();
+
+            MethodInputChanged();
 
         }
         private void Button_9_Click(object sender, RoutedEventArgs e)
@@ -162,6 +176,8 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "9x";
             }
+
+            MethodInputChanged();
 
         }
 
@@ -177,17 +193,53 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x", "") + "0x";
             }
-            UpdateSumme();
 
+            MethodInputChanged();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void Button_C_Click(object sender, RoutedEventArgs e)
         {
-            TextBoxValueProduct.Text = "0";
+            TextBoxValueProduct.Text = "0x";
             firstdigit = false;
-            UpdateSumme();
+            MethodInputChanged();
 
         }
+
+
+
+
+
+
+
+
+        private void MethodInputChanged()
+        {
+            int ProductNumber = Convert.ToInt16(TextBoxValueProduct.Text.Replace("x", ""));
+            double SummeProdukte = ProductPrice * ProductNumber;
+            TextBlockProductPreisSumme.Text = SummeProdukte.ToString() + "€";
+
+        }
+
+
+
+
+
 
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
@@ -196,32 +248,19 @@ namespace CheckoutPro.Forms
 
             ClassQuittung classQuittung = new ClassQuittung();
             classQuittung.Anzahl = TextBoxValueProduct.Text;
-            classQuittung.Name = "Name";
-            classQuittung.Preis = "Preis";
-            classQuittung.Summe = "Summe";
+            classQuittung.Name = TextBlockProductName.Text;
+            classQuittung.Preis = TextBlockProductPreis.Text;
+            classQuittung.Summe = TextBlockProductPreisSumme.Text;
 
 
             MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung);
             this.Close();
-
-
 
         }
 
         private void Button_Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void UpdateSumme()
-        {
-
-            // TODO Problem
-            int ValueProduct = Convert.ToInt16(TextBoxValueProduct.Text.Replace("x"," "));
-            double Preis = Convert.ToDouble(TextBlockProductPreis);
-            double Summe = Preis * ValueProduct;
-            TextBlockProductPreisSumme.Text = Summe.ToString();
-
         }
     }
 }
