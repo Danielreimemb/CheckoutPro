@@ -37,9 +37,6 @@ namespace CheckoutPro.Class
             public string BorderColor { get; set; }
             public string Group { get; set; }
 
-
-
-
         }
     }
 }

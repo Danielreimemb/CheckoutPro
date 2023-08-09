@@ -1,6 +1,7 @@
 ﻿using CheckoutPro.Class;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -245,12 +246,21 @@ namespace CheckoutPro.Forms
         {
             // Check ob Product schonmal verwendet wurde ??
 
+            //("C", CultureInfo.CurrentCulture)
+
+
+
+
+            double aSumme = 0.0;
+            double aPreis = 0.0;
+
+
 
             ClassQuittung classQuittung = new ClassQuittung();
             classQuittung.Anzahl = TextBoxValueProduct.Text;
             classQuittung.Name = TextBlockProductName.Text;
-            classQuittung.Preis = TextBlockProductPreis.Text;
-            classQuittung.Summe = TextBlockProductPreisSumme.Text;
+            classQuittung.Preis = aPreis.ToString("C", CultureInfo.CurrentCulture);
+            classQuittung.Summe = aSumme.ToString("C", CultureInfo.CurrentCulture);
 
 
             MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung);

@@ -134,21 +134,17 @@
                     <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
+                                <Grid Width="200">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="*"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
-                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" RadiusX="5" RadiusY="5" Grid.RowSpan="3"/>
+                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="3" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
                                     <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="16" FontWeight="Medium" HorizontalAlignment="Center" Margin="20,10,20,10"/>
                                     <TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>
-
-                                    <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Margin="20,10,20,20" >
-                                        <TextBlock Text="{Binding Preis}" FontSize="18" FontWeight="Bold"/>
-                                        <TextBlock Text=" €" FontSize="18" FontWeight="Bold"/>
-                                    </StackPanel>
+                                    <TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="20,10,20,20" />
 
                                 </Grid>
                             </DataTemplate>
