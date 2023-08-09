@@ -39,26 +39,21 @@ namespace CheckoutPro
 
         private void ButtonHeaderSettings_Click(object sender, EventArgs e)
         {
-            //Settings
             WindowSettings windowSettings = new WindowSettings();
             windowSettings.Show();
-
         }
         private void ButtonHeaderInfo_Click(object sender, RoutedEventArgs e)
         {
-            //Info
             WindowSoftwareInfo windowSoftwareInfo = new WindowSoftwareInfo();
             windowSoftwareInfo.Show();
         }
         private void ButtonHeaderUser_Click(object sender, RoutedEventArgs e)
         {
-            //User
             WindowUserInfo windowUserInfo = new WindowUserInfo();
             windowUserInfo.Show();
         }
         private void ButtonExitApplication_Click(object sender, RoutedEventArgs e)
         {
-            // Funktion Fehlt noch
             this.Close();
         }
 
@@ -72,37 +67,19 @@ namespace CheckoutPro
             WindowProductItem productItem = new WindowProductItem();
             productItem.Show();
 
-            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element hinzufügen";
-
-            //// Neues Produkt
-
-            //Produkt produkt = new Produkt();
-            //produkt.Name = "Produkt";
-            //produkt.Preis = 10.0;
-            //produkt.Farbe = "#1976d2";
-            //produkt.Gruppe = "Gruppe 1";
-
-            //ListboxMainWindowProducts.Items.Add(produkt);
-
-            
-
+            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element hinzufügen";           
         }
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            WindowProductItem productItem = new WindowProductItem();
-            productItem.Show();
-
-            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
-
+            // TODO: Grafische Änderung evtl. Progressbar auf der Unterseite die sich verfärbt (Feedback)
+        
         }
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (ListboxMainWindowProducts.SelectedItem != null)
-            {
-                ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
-            }
+            // TODO: Grafische Änderung evtl. Progressbar auf der Unterseite die sich verfärbt (Feedback)
+
         }
 
         private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
@@ -150,26 +127,60 @@ namespace CheckoutPro
         {
             if (ListboxMainWindowProducts.SelectedItem != null)
             {
-                WindowPurchaseProduct windowPurchaseProduct = new WindowPurchaseProduct();
-                windowPurchaseProduct.Show();
+                if(ToggleButtonDeleteProduct.IsChecked == false && ToggleButtonEditProduct.IsChecked == false)
+                {
+                    WindowPurchaseProduct windowPurchaseProduct = new WindowPurchaseProduct();
+                    windowPurchaseProduct.Show();
 
-                Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
+                    Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
 
-                //MessageBox.Show(produkt.Name + produkt.Preis.ToString() + produkt.Gruppe);
+                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
+                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
+                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
+                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString();
 
-                int AnzahlfromPurchaseProductWindow = 1;
+                    WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
+                }
+
+                if (ToggleButtonEditProduct.IsChecked == true && ToggleButtonDeleteProduct.IsChecked == true)
+                {
+                    ToggleButtonDeleteProduct.IsChecked = false;
+                    ToggleButtonEditProduct.IsChecked = true;
+                }
+
+                if (ToggleButtonEditProduct.IsChecked == true)
+                {
+                    WindowProductItem productItem = new WindowProductItem();
+                    productItem.Show();
 
 
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString();
-
-                WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
-
-                //TextBoxCurrentPurchase.Text += AnzahlfromPurchaseProductWindow.ToString() + "x " + produkt.Name.ToString() + " " + produkt.Preis.ToString() + "\r";
+                    Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
 
 
+
+
+
+                    WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
+                    WindowProductItem.windowProductItemInstance.TextBoxName.Text = produkt.Name;
+                    WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
+                    WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
+                    WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString();
+                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = Convert.brush;
+
+                    // TODO: Hier Fehlen noch Eigenschaften
+                    // TODO: Hier muss die Farbe von einem String in eine Brush convertiert werden.
+
+                }
+
+
+                if (ToggleButtonDeleteProduct.IsChecked == true)
+                {
+                    if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
+                    }
+                }
+                
                 ListboxMainWindowProducts.SelectedItem = null;
             }
         }
@@ -179,85 +190,15 @@ namespace CheckoutPro
 
         private string FormatPurchaselLine(string ProductName, string ProductPrice, string ProductCount)
         {
-            // Product Name = asdflnbsaödfmäasdf
-            // Product Price = 3,45€
-            // Product Count = 12x
-
-
-
-
-
             int QuittungsTextmaxlenght = 36;
 
-            // 2x TextTextTextTextTextText    3,00€
-            // 123456789012345678901234567890123456
-
-
-            // 2x TextTextTextTextTextTextTextTextT
-            // TextTextTextTextTextTextTextTextText
-            //                                3,00€
-            //
-            //
-
-
-            // 6 Zeichen für Preis frei
-            // 3 Zeichen für Anzahl / 4 Zeichen
-            
-
-
-            if(ProductCount.Length == 2)
-            {
-                int VerfügbareLängeZeile = QuittungsTextmaxlenght - 3;
-                int VerwendeteLängePreis = ProductPrice.Length + 1;
-                int VerfügbareLängeName = VerfügbareLängeZeile - VerwendeteLängePreis;
-
-                if (ProductName.Length <= VerfügbareLängeName) //Name passt in Zeile
-                {
-                    
-
-
-                    return ProductCount + " " + ProductName + "{0,8}" + ProductPrice;
-                }
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-            if(ProductCount.Length == 3)
-            {
-                int VerfügbareLängeText = QuittungsTextmaxlenght - 4;
-            }
-
-
-
-
-                
+            // TODO: Hier muss noch die Formatierung einer Einzelnen Zeile für die Quittung erstellt werden.
+                           
 
 
 
             return "";
         }
-
-
-
-        private string FormatPurchaseQuittung(string text)
-        {
-            return "";
-        }
-
-
-
-
-
-
 
 
 
@@ -273,9 +214,8 @@ namespace CheckoutPro
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "My Application", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "Checkout Pro", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
-
                 System.Windows.Forms.Application.Exit();
             }
             else
@@ -291,10 +231,6 @@ namespace CheckoutPro
         // -- Methods --
         #region Methods
 
-        private void InitialStartup()
-        {
-
-        }
 
         private void NormalStartup()
         {
@@ -334,18 +270,6 @@ namespace CheckoutPro
                 System.Windows.Forms.MessageBox.Show("Datenbank konnte nicht gefunden werden");
             }
         }
-
-        private void UpdateSummePurchase()
-        {
-
-        }
-
-
-
-
-
-
-
 
 
 

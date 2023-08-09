@@ -109,18 +109,18 @@
                                 <Icons:SymbolIcon Symbol="AddCircle" />
                             </Grid>
                         </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
+                        <ToggleButton Name="ToggleButtonEditProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Edit" />
                             </Grid>
-                        </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
+                        </ToggleButton>
+                        <ToggleButton Name="ToggleButtonDeleteProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Delete" />
                             </Grid>
-                        </Button>
+                        </ToggleButton>
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
@@ -205,13 +205,14 @@
 
                 <GroupBox Grid.Row="2" Header="Einkauf" >
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
-                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" >
+                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column"  >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="60"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
                             <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="100"/>
                             <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="100"/>
                         </DataGrid.Columns>
+
                     </DataGrid>
 
                 </GroupBox>

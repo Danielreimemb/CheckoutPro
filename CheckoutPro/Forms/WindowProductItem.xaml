@@ -35,9 +35,9 @@
             </Grid.RowDefinitions>
 
 
-            <GroupBox Grid.Row="0" Header="ID">
+            <!--<GroupBox Grid.Row="0" Header="ID">
                 <TextBox Text="" Name="TextBoxID"/>
-            </GroupBox>
+            </GroupBox>-->
             <GroupBox Grid.Row="1" Header="Name">
                 <TextBox Text="" Name="TextBoxName"/>
             </GroupBox>

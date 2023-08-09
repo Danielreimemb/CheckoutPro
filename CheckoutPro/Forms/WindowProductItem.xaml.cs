@@ -37,7 +37,7 @@ namespace CheckoutPro.Forms
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             Produkt produkt = new Produkt();
-            produkt.ID = TextBoxID.Text;
+            //produkt.ID = TextBoxID.Text;
             produkt.Name = TextBoxName.Text;
             produkt.Desc = TextBoxDesc.Text;
             produkt.Icon = TextBoxIcon.Text;
