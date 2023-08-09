@@ -107,8 +107,7 @@ namespace CheckoutPro
 
         private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
         {
-            UpdateSummePurchase();
-            //SaveProductstoFile();
+            SaveProductstoFile();
             //System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
         }
 
@@ -338,13 +337,7 @@ namespace CheckoutPro
 
         private void UpdateSummePurchase()
         {
-            decimal sum = 0;
-            foreach (DataRowView row in DataGridPurchase.ItemsSource)
-            {
-                // Entfernen Sie das Euro-Zeichen und konvertieren Sie den String in eine Dezimalzahl
-                decimal amount = decimal.Parse(row[3].ToString().Replace("€", ""));
-                sum += amount;
-            }
+
         }
 
 
