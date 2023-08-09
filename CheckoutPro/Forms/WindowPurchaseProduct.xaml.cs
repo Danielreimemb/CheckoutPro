@@ -233,7 +233,7 @@ namespace CheckoutPro.Forms
         {
             int ProductNumber = Convert.ToInt16(TextBoxValueProduct.Text.Replace("x", ""));
             double SummeProdukte = ProductPrice * ProductNumber;
-            TextBlockProductPreisSumme.Text = SummeProdukte.ToString() + "€";
+            TextBlockProductPreisSumme.Text = SummeProdukte.ToString("C", CultureInfo.CurrentCulture);
 
         }
 
@@ -249,21 +249,15 @@ namespace CheckoutPro.Forms
             //("C", CultureInfo.CurrentCulture)
 
 
-
-
-            double aSumme = 0.0;
-            double aPreis = 0.0;
-
-
-
             ClassQuittung classQuittung = new ClassQuittung();
             classQuittung.Anzahl = TextBoxValueProduct.Text;
             classQuittung.Name = TextBlockProductName.Text;
-            classQuittung.Preis = aPreis.ToString("C", CultureInfo.CurrentCulture);
-            classQuittung.Summe = aSumme.ToString("C", CultureInfo.CurrentCulture);
+            classQuittung.Preis = TextBlockProductPreis.Text;
+            classQuittung.Summe = TextBlockProductPreisSumme.Text;
 
 
             MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung);
+
             this.Close();
 
         }

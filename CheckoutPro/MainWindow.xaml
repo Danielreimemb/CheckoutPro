@@ -205,7 +205,7 @@
 
                 <GroupBox Grid.Row="2" Header="Einkauf" >
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
-                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="60"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
@@ -217,7 +217,7 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="3" Header="Summe">
-                    <TextBlock Text="0.00€" FontSize="28" HorizontalAlignment="Right"/>
+                    <TextBlock Text="0.00€" FontSize="28" HorizontalAlignment="Right" Name="TextBlockSummePurchase"/>
                 </GroupBox>
 
                 <GroupBox Grid.Row="4" Header="Drucken" >

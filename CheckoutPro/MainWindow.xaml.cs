@@ -1,7 +1,9 @@
 ﻿using CheckoutPro.Forms;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -105,8 +107,9 @@ namespace CheckoutPro
 
         private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
         {
-            SaveProductstoFile();
-            System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
+            UpdateSummePurchase();
+            //SaveProductstoFile();
+            //System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
         }
 
         #endregion
@@ -160,7 +163,7 @@ namespace CheckoutPro
 
                 WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
                 WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
-                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString();
+                WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
                 WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString();
 
                 WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
@@ -331,33 +334,18 @@ namespace CheckoutPro
             {
                 System.Windows.Forms.MessageBox.Show("Datenbank konnte nicht gefunden werden");
             }
-
-
-                
-
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        private void UpdateSummePurchase()
+        {
+            decimal sum = 0;
+            foreach (DataRowView row in DataGridPurchase.ItemsSource)
+            {
+                // Entfernen Sie das Euro-Zeichen und konvertieren Sie den String in eine Dezimalzahl
+                decimal amount = decimal.Parse(row[3].ToString().Replace("€", ""));
+                sum += amount;
+            }
+        }
 
 
 
@@ -372,6 +360,6 @@ namespace CheckoutPro
 
         #endregion
 
-        
+
     }
 }
