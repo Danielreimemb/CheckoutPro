@@ -72,14 +72,38 @@ namespace CheckoutPro
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Grafische Änderung evtl. Progressbar auf der Unterseite die sich verfärbt (Feedback)
-        
+            if (ToggleButtonDeleteProduct.IsChecked == true)
+            {
+                ProgressBarBottomMainWindow.Value = 100;
+                ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
+                TextBlockLogOutputMainwindow.Text = "Produkte Bearbeiten Aktiv";
+            }
+            else
+            {
+                ProgressBarBottomMainWindow.Value = 0;
+                ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
+                TextBlockLogOutputMainwindow.Text = "OK";
+
+            }
+
         }
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Grafische Änderung evtl. Progressbar auf der Unterseite die sich verfärbt (Feedback)
+            if(ToggleButtonDeleteProduct.IsChecked == true)
+            {
+                ProgressBarBottomMainWindow.Value = 100;
+                ProgressBarBottomMainWindow.Foreground = Brushes.Red;
+                TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
 
+            }
+            else
+            {
+                ProgressBarBottomMainWindow.Value = 0;
+                ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
+                TextBlockLogOutputMainwindow.Text = "OK";
+
+            }
         }
 
         private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
