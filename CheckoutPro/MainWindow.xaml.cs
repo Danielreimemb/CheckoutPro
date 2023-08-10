@@ -72,7 +72,7 @@ namespace CheckoutPro
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            if (ToggleButtonDeleteProduct.IsChecked == true)
+            if (ToggleButtonEditProduct.IsChecked == true)
             {
                 ProgressBarBottomMainWindow.Value = 100;
                 ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
