@@ -126,7 +126,8 @@ namespace CheckoutPro
             //windowPrintSettings.Show();
 
             ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-            classMethodsPrinter.Print();
+            
+            classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
 
         }
 

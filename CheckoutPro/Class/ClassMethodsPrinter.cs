@@ -27,8 +27,12 @@ namespace CheckoutPro.Class
 
         }
 
-        public void Print(string Anzahl, string Produkt, string Preis)
+        public void Print(string lAnzahl, string lProdukt, string lPreis)
         {
+            Anzahl = lAnzahl;
+            Produkt = lProdukt;
+            Preis = lPreis;
+
             PrintDocument pd = new PrintDocument();
             pd.PrintPage += new PrintPageEventHandler(PrintBon);
 
@@ -38,8 +42,6 @@ namespace CheckoutPro.Class
 
         private static void PrintBon(object sender, PrintPageEventArgs e)
         {
-
-
             Graphics g = e.Graphics;
 
             float pageWidth = e.PageSettings.PrintableArea.Width;
@@ -47,7 +49,7 @@ namespace CheckoutPro.Class
 
             Font font = new Font("Consolas", 12);
             Font largeFont = new Font("Consolas", 18);
-            Font boldFont = new Font("Consolas", 12, FontStyle.Bold);
+            Font boldFont = new Font("Consolas", 18, FontStyle.Bold);
 
             SizeF anzahlSize = g.MeasureString(Anzahl, boldFont);
             SizeF produktSize = g.MeasureString(Produkt, largeFont);
