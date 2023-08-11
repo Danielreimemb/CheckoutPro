@@ -1,4 +1,5 @@
-﻿using CheckoutPro.Forms;
+﻿using CheckoutPro.Class;
+using CheckoutPro.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using static CheckoutPro.Class.ClassProduct;
+using static CheckoutPro.Class.ClassMethodsPrinter;
 
 namespace CheckoutPro
 {
@@ -120,8 +122,12 @@ namespace CheckoutPro
 
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
-            WindowPrintSettings windowPrintSettings = new WindowPrintSettings();
-            windowPrintSettings.Show();
+            //WindowPrintSettings windowPrintSettings = new WindowPrintSettings();
+            //windowPrintSettings.Show();
+
+            ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
+            classMethodsPrinter.Print();
+
         }
 
         private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
