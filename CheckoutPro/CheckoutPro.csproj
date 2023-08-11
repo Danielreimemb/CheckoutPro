@@ -103,7 +103,6 @@
     </Compile>
     <Compile Include="Class\ClassMethodsDatabase.cs" />
     <Compile Include="Class\ClassMethodsPrinter.cs" />
-    <Compile Include="Class\ClassMethodsQuittungFormatting.cs" />
     <Compile Include="Class\ClassProduct.cs" />
     <Compile Include="Class\ClassQuittung.cs" />
     <Compile Include="Forms\WindowPrintSettings.xaml.cs">
