@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro
@@ -32,6 +33,7 @@ namespace CheckoutPro
             InitializeComponent();
             NormalStartup();
             mainWindowInstance = this;
+
         }
 
 
@@ -214,14 +216,25 @@ namespace CheckoutPro
 
         private string FormatPurchaselLine(string ProductName, string ProductPrice, string ProductCount)
         {
-            int QuittungsTextmaxlenght = 36;
+            // FormatPurchaselLine("Produktname", "3,00€", "22x");
 
-            // TODO: Hier muss noch die Formatierung einer Einzelnen Zeile für die Quittung erstellt werden.
-                           
+            string s1 = ProductCount.PadRight(4);
+            string s2 = ProductName.PadRight(24);
+            string s3 = ProductPrice.PadLeft(8);
+
+            string result = s1 + s2 + s3;
+
+            return result;
+        }
+
+        private void FormatPurchaseList()
+        {
+            //foreach (DataGridRow row in DataGridPurchase)
+            //{
+
+            //}
 
 
-
-            return "";
         }
 
 
@@ -298,7 +311,7 @@ namespace CheckoutPro
 
 
 
-
+        
         #endregion
 
 
