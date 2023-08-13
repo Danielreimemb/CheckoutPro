@@ -30,14 +30,18 @@ namespace CheckoutPro
     {
         public static MainWindow mainWindowInstance;
 
-        
+        public List<ClassProduct> classProducts {  get; set; }
 
 
         public MainWindow()
         {
             InitializeComponent();
-            NormalStartup();
             mainWindowInstance = this;
+
+            classProducts = new List<ClassProduct>();
+            ListboxMainWindowProducts.ItemsSource = classProducts;
+
+            NormalStartup();
 
         }
 
@@ -128,6 +132,8 @@ namespace CheckoutPro
             //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
             //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
 
+            
+
         }
 
         private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
@@ -164,7 +170,7 @@ namespace CheckoutPro
                     WindowPurchaseProduct windowPurchaseProduct = new WindowPurchaseProduct();
                     windowPurchaseProduct.Show();
 
-                    Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
+                    ClassProduct produkt = ListboxMainWindowProducts.SelectedItem as ClassProduct;
 
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
@@ -186,7 +192,7 @@ namespace CheckoutPro
                     productItem.Show();
 
 
-                    Produkt produkt = ListboxMainWindowProducts.SelectedItem as Produkt;
+                    ClassProduct produkt = ListboxMainWindowProducts.SelectedItem as ClassProduct;
 
 
 
@@ -209,7 +215,10 @@ namespace CheckoutPro
                 {
                     if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem);
+                        //ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem); Old Version
+
+                        classProducts.RemoveAt(ListboxMainWindowProducts.SelectedIndex);
+                        ListboxMainWindowProducts.Items.Refresh();
                     }
                 }
                 
@@ -286,7 +295,7 @@ namespace CheckoutPro
         private void SaveProductstoFile()
         {
             StreamWriter myOutputStream = new StreamWriter("Database.csv");
-            foreach (Produkt produkt in ListboxMainWindowProducts.Items)
+            foreach (ClassProduct produkt in ListboxMainWindowProducts.Items)
             {
                 myOutputStream.WriteLine(produkt.ID + ";" + produkt.Name + ";" + produkt.Desc + ";" + produkt.Icon + ";" + produkt.Preis.ToString() + ";" + produkt.BackgroundColor + ";" + produkt.BorderColor + ";" + produkt.Group ) ;
             }
@@ -295,6 +304,7 @@ namespace CheckoutPro
 
         private void LoadProductsfromFile()
         {
+            
             string curFile = @"Database.csv";
             if (File.Exists(curFile))
             {
@@ -303,8 +313,22 @@ namespace CheckoutPro
                 {
                     string line = myInputStream.ReadLine();
                     string[] values = line.Split(';');
-                    Produkt produkt = new Produkt(values[0], values[1], values[2], values[3], Convert.ToDouble(values[4]), values[5], values[6], values[7]);
-                    ListboxMainWindowProducts.Items.Add(produkt);
+                    ClassProduct product = new ClassProduct();
+                    product.ID = values[0];
+                    product.Name = values[1];
+                    product.Desc = values[2];
+                    product.Icon = values[3];
+                    product.Preis = Convert.ToDouble(values[4]);
+                    product.BackgroundColor = values[5];
+                    product.BorderColor = values[6];
+                    product.Group = values[7];
+
+
+                    classProducts.Add(product);
+                    ListboxMainWindowProducts.Items.Refresh();
+                    GroupListBox();
+
+
                 }
                 myInputStream.Close();
             }
@@ -314,7 +338,11 @@ namespace CheckoutPro
             }
         }
 
-
+        public void GroupListBox()
+        {
+            ListboxMainWindowProducts.Items.GroupDescriptions.Clear();
+            ListboxMainWindowProducts.Items.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
+        }
 
 
         

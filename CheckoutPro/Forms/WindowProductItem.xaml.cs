@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CheckoutPro.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace CheckoutPro.Forms
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            Produkt produkt = new Produkt();
+            ClassProduct produkt = new ClassProduct();
             //produkt.ID = TextBoxID.Text;
             produkt.Name = TextBoxName.Text;
             produkt.Desc = TextBoxDesc.Text;
@@ -46,7 +47,14 @@ namespace CheckoutPro.Forms
             produkt.BorderColor = ColorpickerItemBorderColor.SelectedColor.ToString();
             produkt.Group = ComboBoxGruppe.Text;
 
-            MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);
+            //MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);
+
+            MainWindow.mainWindowInstance.classProducts.Add(produkt);
+            MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Refresh();
+            MainWindow.mainWindowInstance.GroupListBox();
+
+
+
             this.Close();
         }
     }
