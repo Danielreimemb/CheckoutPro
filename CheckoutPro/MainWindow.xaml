@@ -131,10 +131,10 @@
                 </GroupBox>
 
                 <GroupBox Header="Produkte" Grid.Row="2">
-                    <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged">
+                    <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="200">
+                                <Grid Width="240">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="*"/>
@@ -142,7 +142,7 @@
                                     </Grid.RowDefinitions>
 
                                     <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="3" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
-                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="16" FontWeight="Medium" HorizontalAlignment="Center" Margin="20,10,20,10"/>
+                                    <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="16" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow"/>
                                     <TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>
                                     <TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="20,10,20,20" />
 
@@ -152,9 +152,14 @@
                         </ListBox.ItemTemplate>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Vertical" />
+                                <WrapPanel Orientation="Horizontal" ItemWidth="250"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
+                        
+                        <ListBox.GroupStyle>
+                            <GroupStyle  />
+                        </ListBox.GroupStyle>
+
                     </ListBox>
                 </GroupBox>
 

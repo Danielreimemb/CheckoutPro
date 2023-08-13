@@ -22,12 +22,15 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using static CheckoutPro.Class.ClassProduct;
 using static CheckoutPro.Class.ClassMethodsPrinter;
+using System.ComponentModel;
 
 namespace CheckoutPro
 {
     public partial class MainWindow : Window
     {
         public static MainWindow mainWindowInstance;
+
+        
 
 
         public MainWindow()
@@ -122,12 +125,8 @@ namespace CheckoutPro
 
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
-            //WindowPrintSettings windowPrintSettings = new WindowPrintSettings();
-            //windowPrintSettings.Show();
-
-            ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-            
-            classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
+            //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
+            //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
 
         }
 
