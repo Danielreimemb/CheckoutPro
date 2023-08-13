@@ -55,9 +55,7 @@
             </GroupBox>
             <GroupBox Grid.Row="5" Header="Gruppe">
                 <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe">
-                    <ComboBoxItem>
-                        <TextBlock Text="Gutscheine"/>
-                    </ComboBoxItem>
+
                 </ComboBox>
             </GroupBox>
             <GroupBox Grid.Row="6" Header="Vorschau">

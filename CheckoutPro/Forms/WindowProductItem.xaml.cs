@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -28,7 +29,23 @@ namespace CheckoutPro.Forms
             InitializeComponent();
 
             windowProductItemInstance = this;
+
+
+            
+
+
+
+            foreach (ClassProduct produkt in MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items)
+            {
+                if (!ComboBoxGruppe.Items.Contains(produkt.Group))
+                {
+                    ComboBoxGruppe.Items.Add(produkt.Group);
+
+                }
+            }
+            ComboBoxGruppe.SelectedIndex = 0;
         }
+
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
@@ -46,8 +63,6 @@ namespace CheckoutPro.Forms
             produkt.BackgroundColor = ColorpickerItemBackgroundColor.SelectedColor.ToString();
             produkt.BorderColor = ColorpickerItemBorderColor.SelectedColor.ToString();
             produkt.Group = ComboBoxGruppe.Text;
-
-            //MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Add(produkt);
 
             MainWindow.mainWindowInstance.classProducts.Add(produkt);
             MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Refresh();
