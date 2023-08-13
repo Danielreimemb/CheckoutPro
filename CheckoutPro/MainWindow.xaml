@@ -217,12 +217,21 @@
 
                 <GroupBox Grid.Row="2" Header="Einkauf" >
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
-                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column"  >
+                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="40" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="50" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="60"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
-                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="100"/>
-                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="100"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80"/>
+                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80"/>
+                            <DataGridTemplateColumn Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button BorderThickness="0"  Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
+                                            <Icons:SymbolIcon Symbol="Delete" Foreground="Red" />
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
 
                     </DataGrid>

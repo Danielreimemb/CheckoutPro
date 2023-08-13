@@ -255,8 +255,11 @@ namespace CheckoutPro.Forms
             classQuittung.Preis = TextBlockProductPreis.Text;
             classQuittung.Summe = TextBlockProductPreisSumme.Text;
 
+            MainWindow.mainWindowInstance.classQuittungs.Add(classQuittung);
+            MainWindow.mainWindowInstance.DataGridPurchase.Items.Refresh();
+            MainWindow.mainWindowInstance.UpdateSumme();
 
-            MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung);
+            //MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung); - Old Version
 
             this.Close();
 

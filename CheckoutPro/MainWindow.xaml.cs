@@ -31,6 +31,7 @@ namespace CheckoutPro
         public static MainWindow mainWindowInstance;
 
         public List<ClassProduct> classProducts {  get; set; }
+        public List<ClassQuittung> classQuittungs { get; set; }
 
 
         public MainWindow()
@@ -39,10 +40,12 @@ namespace CheckoutPro
             mainWindowInstance = this;
 
             classProducts = new List<ClassProduct>();
+            classQuittungs = new List<ClassQuittung>();
+
             ListboxMainWindowProducts.ItemsSource = classProducts;
+            DataGridPurchase.ItemsSource = classQuittungs;
 
             NormalStartup();
-
         }
 
 
@@ -129,6 +132,7 @@ namespace CheckoutPro
 
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
+            // Funktioniert, wegen Testzwecken deaktiviert
             //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
             //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
 
@@ -344,8 +348,21 @@ namespace CheckoutPro
             ListboxMainWindowProducts.Items.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
         }
 
+        public void UpdateSumme()
+        {
+            double SummeProducts = 0;
+            foreach (ClassQuittung quittung in DataGridPurchase.Items)
+            {
 
-        
+
+                SummeProducts = Convert.ToDouble(quittung.Summe.Replace("€","")) + SummeProducts;
+
+            }
+            TextBlockSummePurchase.Text = SummeProducts.ToString("C", CultureInfo.CurrentCulture);
+
+
+        }
+
         #endregion
 
 

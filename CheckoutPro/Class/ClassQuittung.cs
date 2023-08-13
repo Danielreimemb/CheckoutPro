@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CheckoutPro.Class
 {
-    internal class ClassQuittung
+    public class ClassQuittung
     {
         public string Anzahl { get; set; }
         public string Name { get; set; }
