@@ -97,6 +97,11 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
                 <Grid Grid.Row="0">
                     <TextBlock Text="Produkte" FontSize="18" FontWeight="Medium"/>
                 </Grid>
@@ -121,16 +126,33 @@
                                 <Icons:SymbolIcon Symbol="Delete" />
                             </Grid>
                         </ToggleButton>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="Datenbank" Grid.Row="1" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal">
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Save" />
                             </Grid>
                         </Button>
+
+                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
+                            <Grid>
+                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Icons:SymbolIcon Symbol="Open" />
+                            </Grid>
+                        </Button>
+
+
+
                     </StackPanel>
+
+                    
                 </GroupBox>
 
-                <GroupBox Header="Produkte" Grid.Row="2">
+                <GroupBox Header="Produkte" Grid.Row="2" Grid.ColumnSpan="2">
                     <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -143,7 +165,7 @@
                                     <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="3" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
                                     <TextBlock Text="{Binding Name}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
                                     <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
-                                    <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="20,10,20,20" />-->
+                                    <TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Left" Background="Yellow" Height="20" VerticalAlignment="Top" />
 
                                 </Grid>
                             </DataTemplate>
@@ -166,6 +188,28 @@
                                 
                             </GroupStyle>
                         </ListBox.GroupStyle>
+
+                        <!--<ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <Border x:Name="border" Background="Transparent">
+                                                <Grid>
+                                                    <ContentPresenter />
+                                                    <TextBlock x:Name="text" Text="{Binding Preis, StringFormat={}{0:C}}" Language="de-DE" Visibility="Collapsed" />
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="text" Property="Visibility" Value="Visible" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.Resources>-->
 
                     </ListBox>
                 </GroupBox>
@@ -196,7 +240,7 @@
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Print" />
+                                <Icons:SymbolIcon Symbol="PrintAdd" />
                             </Grid>
                         </Button>
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonCalculator_Click">
@@ -204,12 +248,6 @@
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="Calculator" />
 
-                            </Grid>
-                        </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Delete" />
                             </Grid>
                         </Button>
                     </StackPanel>
@@ -226,7 +264,7 @@
                             <DataGridTemplateColumn Width="80">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button BorderThickness="0"  Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
+                                        <Button BorderThickness="0"  Grid.Column="0" Background="Transparent" Click="ButtonDataGridDeleteItem_Click">
                                             <Icons:SymbolIcon Symbol="Delete" Foreground="Red" />
                                         </Button>
                                     </DataTemplate>
@@ -244,7 +282,7 @@
 
                 <GroupBox Grid.Row="4" Header="Drucken" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonDeleteEntry_Click">
+                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
                             <Grid>
                                 <Rectangle Width="110" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,60,0"/>

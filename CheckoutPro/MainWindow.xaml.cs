@@ -140,13 +140,6 @@ namespace CheckoutPro
 
         }
 
-        private void ButtonDeleteEntry_Click(object sender, RoutedEventArgs e)
-        {
-            if(DataGridPurchase.SelectedItem != null)
-            {
-                DataGridPurchase.Items.Remove(DataGridPurchase.SelectedItem);
-            }
-        }
 
         private void ButtonCalculator_Click(object sender, RoutedEventArgs e)
         {
@@ -363,8 +356,29 @@ namespace CheckoutPro
 
         }
 
+
         #endregion
 
+        private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            // Funktioniert nicht
+            foreach (ClassQuittung item in DataGridPurchase.Items.OfType<ClassQuittung>())
+            {
+                classQuittungs.Remove(item);
 
+            }
+
+
+            DataGridPurchase.Items.Refresh();
+            UpdateSumme();
+        }
+
+        private void ButtonClearQuittung_Click(object sender, RoutedEventArgs e)
+        {
+
+            classQuittungs.Clear();
+            DataGridPurchase.Items.Refresh();
+            UpdateSumme();
+        }
     }
 }
