@@ -200,7 +200,7 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
                     WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString();
-                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = Convert.brush;
+
 
                     // TODO: Hier Fehlen noch Eigenschaften
                     // TODO: Hier muss die Farbe von einem String in eine Brush convertiert werden.
@@ -212,8 +212,6 @@ namespace CheckoutPro
                 {
                     if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                     {
-                        //ListboxMainWindowProducts.Items.Remove(ListboxMainWindowProducts.SelectedItem); Old Version
-
                         classProducts.RemoveAt(ListboxMainWindowProducts.SelectedIndex);
                         ListboxMainWindowProducts.Items.Refresh();
                     }
@@ -226,7 +224,7 @@ namespace CheckoutPro
 
 
 
-        private string FormatPurchaselLine(string ProductName, string ProductPrice, string ProductCount)
+        private string FormatPurchasel(string ProductName, string ProductPrice, string ProductCount)
         {
             // FormatPurchaselLine("Produktname", "3,00€", "22x");
 
@@ -239,15 +237,7 @@ namespace CheckoutPro
             return result;
         }
 
-        private void FormatPurchaseList()
-        {
-            //foreach (DataGridRow row in DataGridPurchase)
-            //{
 
-            //}
-
-
-        }
 
 
 
@@ -368,14 +358,12 @@ namespace CheckoutPro
 
             }
 
-
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
         }
 
         private void ButtonClearQuittung_Click(object sender, RoutedEventArgs e)
         {
-
             classQuittungs.Clear();
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
