@@ -69,13 +69,13 @@
         <TabControl Grid.Column="1" Grid.Row="1" Margin="5"  Width="250">
             <TabItem Header="Hintergrund">
                 <GroupBox Header="Hintergrundfarbe">
-                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightGoldenrodYellow"  />
+                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Orange"  />
                 </GroupBox>
             </TabItem>
             
             <TabItem Header="Rahmenfarbe">
                 <GroupBox Header="Rahmenfarbe">
-                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightCyan"  />
+                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Black"  />
                 </GroupBox>
             </TabItem>
 

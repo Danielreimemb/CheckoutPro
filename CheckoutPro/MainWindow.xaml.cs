@@ -23,6 +23,7 @@ using System.Xml.Linq;
 using static CheckoutPro.Class.ClassProduct;
 using static CheckoutPro.Class.ClassMethodsPrinter;
 using System.ComponentModel;
+using System.Windows.Controls.Primitives;
 
 namespace CheckoutPro
 {
@@ -110,6 +111,7 @@ namespace CheckoutPro
                 ProgressBarBottomMainWindow.Foreground = Brushes.Red;
                 TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
 
+                //TODO Funktioniert noch nicht / Löschen von Items
             }
             else
             {
@@ -183,17 +185,25 @@ namespace CheckoutPro
                     ToggleButtonEditProduct.IsChecked = true;
                 }
 
+                if(ToggleButtonDeleteProduct.IsChecked == true)
+                {
+                    if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        ClassProduct product = ListboxMainWindowProducts.SelectedItem as ClassProduct;
+
+                        classProducts.Remove(product);
+                        ListboxMainWindowProducts.Items.Refresh();
+                        GroupListBox();
+                    }
+                }
+
+
                 if (ToggleButtonEditProduct.IsChecked == true)
                 {
                     WindowProductItem productItem = new WindowProductItem();
                     productItem.Show();
 
-
                     ClassProduct produkt = ListboxMainWindowProducts.SelectedItem as ClassProduct;
-
-
-
-
 
                     WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
                     WindowProductItem.windowProductItemInstance.TextBoxName.Text = produkt.Name;
@@ -208,14 +218,6 @@ namespace CheckoutPro
                 }
 
 
-                if (ToggleButtonDeleteProduct.IsChecked == true)
-                {
-                    if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-                    {
-                        classProducts.RemoveAt(ListboxMainWindowProducts.SelectedIndex);
-                        ListboxMainWindowProducts.Items.Refresh();
-                    }
-                }
                 
                 ListboxMainWindowProducts.SelectedItem = null;
             }
@@ -352,11 +354,11 @@ namespace CheckoutPro
         private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
         {
             // Funktioniert nicht
-            foreach (ClassQuittung item in DataGridPurchase.Items.OfType<ClassQuittung>())
-            {
-                classQuittungs.Remove(item);
+            //foreach (ClassQuittung item in DataGridPurchase.Items.OfType<ClassQuittung>())
+            //{
+            //    classQuittungs.Remove(item);
 
-            }
+            //}
 
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
