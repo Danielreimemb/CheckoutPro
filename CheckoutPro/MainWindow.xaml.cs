@@ -175,10 +175,21 @@ namespace CheckoutPro
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
             // Funktioniert, wegen Testzwecken deaktiviert
-            //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-            //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
-
             
+            
+            foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
+            {
+                System.Windows.MessageBox.Show(classQuittung.Anzahl + classQuittung.Name + classQuittung.Preis);
+                //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
+                //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
+            }
+
+
+
+
+
+
+
 
         }
 
@@ -253,7 +264,12 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
 
                     //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml(produkt.BackgroundColor);
-                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = 
+                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml("#FFDFD991");
+
+
+
+                    //System.Drawing.Color.FromArgb(myHashCode);WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.Color.FromArgb(produkt.BackgroundColor);
+
 
 
                     // TODO: Hier Fehlen noch Eigenschaften
@@ -262,7 +278,7 @@ namespace CheckoutPro
                 }
 
 
-                
+
                 ListboxMainWindowProducts.SelectedItem = null;
             }
         }

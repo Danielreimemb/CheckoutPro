@@ -59,12 +59,12 @@
                         <Icons:SymbolIcon Symbol="Info" />
                     </Grid>
                 </Button>
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,122,0" Click="ButtonHeaderUser_Click">
+                <!--<Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,122,0" Click="ButtonHeaderUser_Click">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
                         <Icons:SymbolIcon Symbol="Person" />
                     </Grid>
-                </Button>
+                </Button>-->
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>

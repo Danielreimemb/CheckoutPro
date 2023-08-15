@@ -202,18 +202,6 @@ namespace CheckoutPro.Forms
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         private void Button_C_Click(object sender, RoutedEventArgs e)
         {
             TextBoxValueProduct.Text = "0x";
