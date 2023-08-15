@@ -43,7 +43,11 @@ namespace CheckoutPro.Forms
 
                 }
             }
-            ComboBoxGruppe.SelectedIndex = 0;
+
+            if(ComboBoxGruppe.Text == "Sammlung")
+            {
+                ComboBoxGruppe.SelectedIndex = 0;
+            }
         }
 
 

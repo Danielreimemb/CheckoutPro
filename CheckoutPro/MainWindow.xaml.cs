@@ -35,6 +35,10 @@ namespace CheckoutPro
         public List<ClassQuittung> classQuittungs { get; set; }
 
 
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +52,17 @@ namespace CheckoutPro
 
             NormalStartup();
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
         #region MainWindow Header Buttons
@@ -74,6 +89,31 @@ namespace CheckoutPro
 
 
         #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         #region MainWindow Produkte Buttons über Listbox
 
@@ -210,6 +250,10 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
                     WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString();
+                    WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
+
+                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml(produkt.BackgroundColor);
+                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = 
 
 
                     // TODO: Hier Fehlen noch Eigenschaften
