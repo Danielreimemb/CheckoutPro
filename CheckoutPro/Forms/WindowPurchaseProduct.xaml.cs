@@ -232,11 +232,6 @@ namespace CheckoutPro.Forms
 
         private void Button_Ok_Click(object sender, RoutedEventArgs e)
         {
-            // Check ob Product schonmal verwendet wurde ??
-
-            //("C", CultureInfo.CurrentCulture)
-
-
             ClassQuittung classQuittung = new ClassQuittung();
             classQuittung.Anzahl = TextBoxValueProduct.Text;
             classQuittung.Name = TextBlockProductName.Text;
@@ -246,11 +241,7 @@ namespace CheckoutPro.Forms
             MainWindow.mainWindowInstance.classQuittungs.Add(classQuittung);
             MainWindow.mainWindowInstance.DataGridPurchase.Items.Refresh();
             MainWindow.mainWindowInstance.UpdateSumme();
-
-            //MainWindow.mainWindowInstance.DataGridPurchase.Items.Add(classQuittung); - Old Version
-
             this.Close();
-
         }
 
         private void Button_Exit_Click(object sender, RoutedEventArgs e)
