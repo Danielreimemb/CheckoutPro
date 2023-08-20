@@ -141,7 +141,7 @@
                         <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent">
                             <Grid>
                                 <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Open" />
+                                <Icons:SymbolIcon Symbol="ArrowClockwise" />
                             </Grid>
                         </Button>
 

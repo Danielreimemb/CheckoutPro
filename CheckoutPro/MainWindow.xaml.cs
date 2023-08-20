@@ -179,9 +179,10 @@ namespace CheckoutPro
             
             foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
             {
-                System.Windows.MessageBox.Show(classQuittung.Anzahl + classQuittung.Name + classQuittung.Preis);
-                //ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
+                //System.Windows.MessageBox.Show(classQuittung.Anzahl + classQuittung.Name + classQuittung.Preis);
+                ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
                 //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
+                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis);
             }
 
 
@@ -191,17 +192,6 @@ namespace CheckoutPro
 
 
 
-        }
-
-
-        private void ButtonCalculator_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessStartInfo psi = new ProcessStartInfo();
-            psi.FileName = "calc.exe";
-            psi.UseShellExecute = true;
-            Process p = new Process();
-            p.StartInfo = psi;
-            p.Start();
         }
 
 
