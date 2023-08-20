@@ -24,18 +24,16 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Author: Daniel Reim" FontSize="20" Grid.Row="0"/>
-            <TextBlock Text="Date: 06.08.2023" FontSize="12" Grid.Row="1"/>
-            <TextBlock Text="2023 CC Daniel Reim" FontSize="20" Grid.Row="2"/>
+            <TextBlock Text="CC: Daniel Reim" FontSize="20" Grid.Row="2" Margin="0,34,0,-52"/>
 
         </Grid>
-        
-        
-        
-        
+
+
+
+
 
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5" HorizontalAlignment="Right">
-            <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="1">
+            <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="1" Click="ButtonOK_Click">
                 <Grid>
                     <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
                     <Icons:SymbolIcon Symbol="Check" Margin="0,0,90,0"/>

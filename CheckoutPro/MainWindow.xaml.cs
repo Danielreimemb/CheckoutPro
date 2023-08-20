@@ -225,7 +225,7 @@ namespace CheckoutPro
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductName.Text = produkt.Name;
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
-                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString();
+                    WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
 
                     WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
                 }

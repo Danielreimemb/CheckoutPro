@@ -235,33 +235,17 @@
 
 
 
-                <GroupBox Header="Funktionen" Grid.Row="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="PrintAdd" />
-                            </Grid>
-                        </Button>
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonCalculator_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Calculator" />
 
-                            </Grid>
-                        </Button>
-                    </StackPanel>
-                </GroupBox>
 
                 <GroupBox Grid.Row="2" Header="Einkauf" >
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
-                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="40" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="50" >
+                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="32" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="50" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Anzahl" Binding="{Binding Anzahl}" Width="60"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80"/>
-                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80"/>
-                            <DataGridTemplateColumn Width="80">
+                            <DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" FontSize="18" />
+                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80" FontSize="18"/>
+                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80" FontSize="18"/>
+                            <DataGridTemplateColumn Width="40">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button BorderThickness="0"  Grid.Column="0" Background="Transparent" Click="ButtonDataGridDeleteItem_Click">
