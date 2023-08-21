@@ -166,6 +166,8 @@ namespace CheckoutPro
         {
             SaveProductstoFile();
             //System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
+            TextBlockLogOutputMainwindow.Text = "Gespeichert";
+
         }
 
         #endregion
@@ -174,8 +176,6 @@ namespace CheckoutPro
 
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
-            // Funktioniert, wegen Testzwecken deaktiviert
-            
             
             foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
             {
@@ -185,10 +185,9 @@ namespace CheckoutPro
                 classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis);
             }
 
-
-
-
-
+            classQuittungs.Clear();
+            DataGridPurchase.Items.Refresh();
+            UpdateSumme();
 
 
 
@@ -255,14 +254,8 @@ namespace CheckoutPro
 
                     //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml(produkt.BackgroundColor);
                     //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml("#FFDFD991");
-
-
-
                     //System.Drawing.Color.FromArgb(myHashCode);WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.Color.FromArgb(produkt.BackgroundColor);
 
-
-
-                    // TODO: Hier Fehlen noch Eigenschaften
                     // TODO: Hier muss die Farbe von einem String in eine Brush convertiert werden.
 
                 }
