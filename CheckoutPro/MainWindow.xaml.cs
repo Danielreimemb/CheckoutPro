@@ -251,13 +251,6 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
                     WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString();
                     WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
-
-                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml(produkt.BackgroundColor);
-                    //WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.ColorTranslator.FromHtml("#FFDFD991");
-                    //System.Drawing.Color.FromArgb(myHashCode);WindowProductItem.windowProductItemInstance.ColorpickerItemBackgroundColor.SelectedColor = System.Drawing.Color.FromArgb(produkt.BackgroundColor);
-
-                    // TODO: Hier muss die Farbe von einem String in eine Brush convertiert werden.
-
                 }
 
 
