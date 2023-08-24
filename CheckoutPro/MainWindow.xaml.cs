@@ -99,7 +99,10 @@ namespace CheckoutPro
 
 
 
+        private void ButtonReloadProducts_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
 
 
 
@@ -389,12 +392,6 @@ namespace CheckoutPro
 
         private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
         {
-            // Funktioniert nicht
-            //foreach (ClassQuittung item in DataGridPurchase.Items.OfType<ClassQuittung>())
-            //{
-            //    classQuittungs.Remove(item);
-
-            //}
 
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
@@ -406,5 +403,7 @@ namespace CheckoutPro
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
         }
+
+
     }
 }
