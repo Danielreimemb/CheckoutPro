@@ -9,7 +9,7 @@
         Title="CheckoutPro" Height="650" Width="950" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
@@ -156,7 +156,7 @@
                     <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="240" Height="100">
+                                <Grid Width="230" Height="100">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"/>
 
@@ -165,7 +165,7 @@
                                     <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="3" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
                                     <TextBlock Text="{Binding Name}" Foreground="{Binding BorderColor}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
                                     <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
-                                    <TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />
+                                    <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />-->
 
                                 </Grid>
                             </DataTemplate>
@@ -173,7 +173,7 @@
                         </ListBox.ItemTemplate>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" ItemWidth="250"/>
+                                <WrapPanel Orientation="Horizontal" ItemWidth="240"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
                         
@@ -241,10 +241,10 @@
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
                     <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="32" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="50" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>
+                            <!--<DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>-->
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" FontSize="18" />
                             <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80" FontSize="18"/>
-                            <DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80" FontSize="18"/>
+                            <!--<DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80" FontSize="18"/>-->
                             <DataGridTemplateColumn Width="40">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -261,21 +261,21 @@
                 </GroupBox>
 
                 <GroupBox Grid.Row="3" Header="Summe">
-                    <TextBlock Text="0.00€" FontSize="28" HorizontalAlignment="Right" Name="TextBlockSummePurchase"/>
+                    <TextBlock Text="0.00€" FontSize="36" HorizontalAlignment="Right" Name="TextBlockSummePurchase"/>
                 </GroupBox>
 
                 <GroupBox Grid.Row="4" Header="Drucken" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
                             <Grid>
-                                <Rectangle Width="110" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
+                                <Rectangle Width="110" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray"/>
                                 <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,60,0"/>
                                 <TextBlock Text="C" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
                             </Grid>
                         </Button>
                         <Button BorderThickness="0" Width="182" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
                             <Grid>
-                                <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
+                                <Rectangle Width="180" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
                                 <Icons:SymbolIcon Symbol="Print" Margin="0,0,90,0"/>
                                 <TextBlock Text="Drucken" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
                             </Grid>
