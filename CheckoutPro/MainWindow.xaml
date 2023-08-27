@@ -102,9 +102,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0">
-                    <TextBlock Text="Produkte" FontSize="18" FontWeight="Medium"/>
-                </Grid>
+                <Grid Grid.Row="0"/>
 
                 <GroupBox Header="Funktionen" Grid.Row="1">
                     <StackPanel Orientation="Horizontal">
@@ -217,7 +215,7 @@
 
             </Grid>
 
-            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
+            <GridSplitter Grid.Column="1" Width="15" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -228,9 +226,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
-                    <TextBlock Text="Zusammenfassung" FontSize="18" FontWeight="Medium"/>
-                </Grid>
+                <Grid Grid.Row="0"/>
 
 
 
@@ -269,15 +265,13 @@
                         <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
                             <Grid>
                                 <Rectangle Width="110" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,60,0"/>
-                                <TextBlock Text="C" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                                <Icons:SymbolIcon Symbol="DeleteLines" Margin="0,0,0,0"/>
                             </Grid>
                         </Button>
                         <Button BorderThickness="0" Width="182" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
                             <Grid>
                                 <Rectangle Width="180" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
-                                <Icons:SymbolIcon Symbol="Print" Margin="0,0,90,0"/>
-                                <TextBlock Text="Drucken" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                                <Icons:SymbolIcon Symbol="Print" Margin="0,0,0,0"/>
                             </Grid>
                         </Button>
                     </StackPanel>
