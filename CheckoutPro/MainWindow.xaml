@@ -237,11 +237,12 @@
                     <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
                     <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="32" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="50" >
                         <DataGrid.Columns>
-                            <!--<DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>-->
+                            <DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" FontSize="18" />
                             <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80" FontSize="18"/>
                             <!--<DataGridTextColumn Header="Insgesamt" Binding="{Binding Summe}" Width="80" FontSize="18"/>-->
-                            <DataGridTemplateColumn Width="40">
+                            
+                            <!--<DataGridTemplateColumn Width="40">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button BorderThickness="0"  Grid.Column="0" Background="Transparent" Click="ButtonDataGridDeleteItem_Click">
@@ -249,7 +250,7 @@
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            </DataGridTemplateColumn>-->
                         </DataGrid.Columns>
 
                     </DataGrid>

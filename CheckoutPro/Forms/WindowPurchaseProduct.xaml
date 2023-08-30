@@ -94,14 +94,14 @@
 
             <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="1" Click="Button_Ok_Click">
                 <Grid>
-                    <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
+                    <Rectangle Width="180" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
                     <Icons:SymbolIcon Symbol="Add" Margin="0,0,90,0"/>
                     <TextBlock Text="Bestätigen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
                 </Grid>
             </Button>
             <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="0" Click="Button_Exit_Click">
                 <Grid>
-                    <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
+                    <Rectangle Width="180" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
                     <Icons:SymbolIcon Symbol="ArrowExit" Margin="0,0,90,0"/>
                     <TextBlock Text="Abbrechen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
                 </Grid>

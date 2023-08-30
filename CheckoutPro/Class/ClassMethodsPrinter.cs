@@ -48,7 +48,7 @@ namespace CheckoutPro.Class
             float pageHeight = e.PageSettings.PrintableArea.Height;
 
             Font font = new Font("Consolas", 12);
-            Font largeFont = new Font("Consolas", 18);
+            Font largeFont = new Font("Consolas", 16);
             Font boldFont = new Font("Consolas", 18, FontStyle.Bold);
 
             SizeF anzahlSize = g.MeasureString(Anzahl, boldFont);
