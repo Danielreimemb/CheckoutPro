@@ -169,7 +169,7 @@ namespace CheckoutPro
         {
             SaveProductstoFile();
             //System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
-            TextBlockLogOutputMainwindow.Text = "Gespeichert";
+            //TextBlockLogOutputMainwindow.Text = "Gespeichert";
 
         }
 

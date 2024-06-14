@@ -90,11 +90,25 @@
                     </Grid>
                 </Button>
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
-                    <Grid>
+                    <!--<Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
                         <Icons:SymbolIcon Symbol="ArrowExit" />
-                    </Grid>
-                    
+                    </Grid>-->
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Rectangle x:Name="BackgroundRectangle" Width="40" Height="40" RadiusX="5" RadiusY="5" Fill="Transparent"/>
+                                <Icons:SymbolIcon Symbol="ArrowExit" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="BackgroundRectangle" Property="Fill" Value="Red"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+
                 </Button>
             </Grid>
 
