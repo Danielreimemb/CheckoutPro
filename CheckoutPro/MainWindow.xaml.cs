@@ -132,15 +132,15 @@ namespace CheckoutPro
         {
             if (ToggleButtonEditProduct.IsChecked == true)
             {
-                ProgressBarBottomMainWindow.Value = 100;
-                ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
-                TextBlockLogOutputMainwindow.Text = "Produkte Bearbeiten Aktiv";
+                //ProgressBarBottomMainWindow.Value = 100;
+                //ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
+                //TextBlockLogOutputMainwindow.Text = "Produkte Bearbeiten Aktiv";
             }
             else
             {
-                ProgressBarBottomMainWindow.Value = 0;
-                ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
-                TextBlockLogOutputMainwindow.Text = "OK";
+                //ProgressBarBottomMainWindow.Value = 0;
+                //ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
+                //TextBlockLogOutputMainwindow.Text = "OK";
 
             }
 
@@ -150,17 +150,17 @@ namespace CheckoutPro
         {
             if(ToggleButtonDeleteProduct.IsChecked == true)
             {
-                ProgressBarBottomMainWindow.Value = 100;
-                ProgressBarBottomMainWindow.Foreground = Brushes.Red;
-                TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
+                //ProgressBarBottomMainWindow.Value = 100;
+                //ProgressBarBottomMainWindow.Foreground = Brushes.Red;
+                //TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
 
                 //TODO Funktioniert noch nicht / Löschen von Items
             }
             else
             {
-                ProgressBarBottomMainWindow.Value = 0;
-                ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
-                TextBlockLogOutputMainwindow.Text = "OK";
+                //ProgressBarBottomMainWindow.Value = 0;
+                //ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
+                //TextBlockLogOutputMainwindow.Text = "OK";
 
             }
         }

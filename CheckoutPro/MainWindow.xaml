@@ -6,22 +6,17 @@
         xmlns:local="clr-namespace:CheckoutPro"
         xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing">
+        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-
-
-        <!-- 
-        
+        <!--
         - palette.info.light #64b5f6
         - palette.info.main  #2196f3
         - palette.info.dark  #1976d2
-        
         -->
 
         <Grid Grid.Row="0" Background="#F2F3F9">
@@ -31,16 +26,51 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-
-
             <!-- Header -->
             <Grid Grid.Column="0">
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left">
-                    <Grid>
-                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
-                        <Icons:SymbolIcon Symbol="Home" />
-                    </Grid>
-                </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
+                            <Icons:SymbolIcon Symbol="Home" />
+                        </Grid>
+                    </Button>
+                    <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonAddProduct_Click">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                            <Icons:SymbolIcon Symbol="AddCircle" />
+                        </Grid>
+                    </Button>
+                    <ToggleButton Name="ToggleButtonEditProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                            <Icons:SymbolIcon Symbol="Edit" />
+                        </Grid>
+                    </ToggleButton>
+                    <ToggleButton Name="ToggleButtonDeleteProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                            <Icons:SymbolIcon Symbol="Delete" />
+                        </Grid>
+                    </ToggleButton>
+
+                    <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                            <Icons:SymbolIcon Symbol="Save" />
+                        </Grid>
+                    </Button>
+
+                    <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonReloadProducts_Click">
+                        <Grid>
+                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
+                            <Icons:SymbolIcon Symbol="ArrowClockwise" />
+                        </Grid>
+                    </Button>
+                    
+                </StackPanel>
+                
+                
             </Grid>
 
 
@@ -59,17 +89,12 @@
                         <Icons:SymbolIcon Symbol="Info" />
                     </Grid>
                 </Button>
-                <!--<Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,122,0" Click="ButtonHeaderUser_Click">
-                    <Grid>
-                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                        <Icons:SymbolIcon Symbol="Person" />
-                    </Grid>
-                </Button>-->
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
                         <Icons:SymbolIcon Symbol="ArrowExit" />
                     </Grid>
+                    
                 </Button>
             </Grid>
 
@@ -91,10 +116,7 @@
 
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -104,53 +126,7 @@
 
                 <Grid Grid.Row="0"/>
 
-                <GroupBox Header="Funktionen" Grid.Row="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonAddProduct_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="AddCircle" />
-                            </Grid>
-                        </Button>
-                        <ToggleButton Name="ToggleButtonEditProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Edit" />
-                            </Grid>
-                        </ToggleButton>
-                        <ToggleButton Name="ToggleButtonDeleteProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Delete" />
-                            </Grid>
-                        </ToggleButton>
-                    </StackPanel>
-                </GroupBox>
-
-                <GroupBox Header="Datenbank" Grid.Row="1" Grid.Column="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Save" />
-                            </Grid>
-                        </Button>
-
-                        <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonReloadProducts_Click">
-                            <Grid>
-                                <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="ArrowClockwise" />
-                            </Grid>
-                        </Button>
-
-
-
-                    </StackPanel>
-
-                    
-                </GroupBox>
-
-                <GroupBox Header="Produkte" Grid.Row="2" Grid.ColumnSpan="2">
+                <GroupBox Header="Produkte" Grid.Row="0" Grid.ColumnSpan="2">
                     <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -159,24 +135,24 @@
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
 
-                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="3" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
+                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="2" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
                                     <TextBlock Text="{Binding Name}" Foreground="{Binding BorderColor}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
                                     <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
                                     <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />-->
 
                                 </Grid>
                             </DataTemplate>
-                            
+
                         </ListBox.ItemTemplate>
-                        
-                        
+
+
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel Orientation="Horizontal" ItemWidth="240"/>
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
 
-                        
+
                         <ListBox.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
@@ -245,7 +221,7 @@
 
 
                 </GroupBox>
-                
+
 
 
             </Grid>
@@ -253,19 +229,5 @@
 
 
         </Grid>
-
-        <Grid Grid.Row="2">
-            <!-- Footer -->
-            
-            <Rectangle Fill="#F2F3F9"/>
-
-            <ProgressBar Name="ProgressBarBottomMainWindow" Value="0" Foreground="Gray" Background="Transparent" Margin="5"/>
-            <TextBlock Text="OK" Name="TextBlockLogOutputMainwindow" Padding="5,0" Margin="7"/>
-
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="5" ShadowDepth="1" Direction="-5" Color="LightGray" />
-            </Grid.Effect>
-        </Grid>
-
     </Grid>
 </Window>
