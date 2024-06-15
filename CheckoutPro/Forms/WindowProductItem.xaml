@@ -38,29 +38,29 @@
             <!--<GroupBox Grid.Row="0" Header="ID">
                 <TextBox Text="" Name="TextBoxID"/>
             </GroupBox>-->
-            <GroupBox Grid.Row="1" Header="Name">
-                <TextBox Text="" Name="TextBoxName"/>
+            <GroupBox Grid.Row="1" Header="Name" BorderBrush="Transparent">
+                <TextBox Text="" Name="TextBoxName" Height="24"/>
             </GroupBox>
-            <GroupBox Grid.Row="2" Header="Beschreibung">
-                <TextBox Text="" Name="TextBoxDesc"/>
+            <GroupBox Grid.Row="2" Header="Beschreibung" BorderBrush="Transparent">
+                <TextBox Text="" Name="TextBoxDesc" Height="24"/>
             </GroupBox>
-            <GroupBox Grid.Row="3" Header="Icon">
-                <TextBox Text="" Name="TextBoxIcon"/>
+            <GroupBox Grid.Row="3" Header="Icon" BorderBrush="Transparent">
+                <TextBox Text="" Name="TextBoxIcon" Height="24"/>
             </GroupBox>
-            <GroupBox Grid.Row="4" Header="Preis">
+            <GroupBox Grid.Row="4" Header="Preis" BorderBrush="Transparent">
                 <Grid>
                     <TextBox Text="0,00" Name="TextBoxPreis" Padding="5"/>
                     <TextBlock Text="€" HorizontalAlignment="Right" Padding="5,5" />
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="5" Header="Gruppe">
-                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe">
+            <GroupBox Grid.Row="5" Header="Gruppe" BorderBrush="Transparent">
+                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe" Height="24">
 
                 </ComboBox>
             </GroupBox>
-            <GroupBox Grid.Row="6" Header="Vorschau">
-                <!-- Local Preview -->
-            </GroupBox>
+            <!--<GroupBox Grid.Row="6" Header="Vorschau">
+                --><!-- Local Preview --><!--
+            </GroupBox>-->
             
             
         </Grid>

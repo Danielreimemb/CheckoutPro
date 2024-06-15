@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:CheckoutPro"
         xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing" WindowStyle="None">
+        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing" WindowStyle="None" >
+
+    <Window.Resources>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#F2F3F9"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -17,6 +27,7 @@
         - palette.info.light #64b5f6
         - palette.info.main  #2196f3
         - palette.info.dark  #1976d2
+        - #FAE338 <- Yellow
         -->
 
         <Grid Grid.Row="0" Background="#F2F3F9">
@@ -30,71 +41,40 @@
             <Grid Grid.Column="0">
                 <StackPanel Orientation="Horizontal">
                     <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Left">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
-                            <Icons:SymbolIcon Symbol="Home" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="Home" />
                     </Button>
                     <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonAddProduct_Click">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                            <Icons:SymbolIcon Symbol="AddCircle" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="AddCircle" />
                     </Button>
                     <ToggleButton Name="ToggleButtonEditProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                            <Icons:SymbolIcon Symbol="Edit" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="Edit" />
                     </ToggleButton>
                     <ToggleButton Name="ToggleButtonDeleteProduct" BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                            <Icons:SymbolIcon Symbol="Delete" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="Delete" />
                     </ToggleButton>
 
                     <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonSaveProducts_Click">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                            <Icons:SymbolIcon Symbol="Save" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="Save" />
                     </Button>
 
                     <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonReloadProducts_Click">
-                        <Grid>
-                            <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                            <Icons:SymbolIcon Symbol="ArrowClockwise" />
-                        </Grid>
+                        <Icons:SymbolIcon Symbol="ArrowClockwise" />
                     </Button>
                     
                 </StackPanel>
-                
-                
+                                
             </Grid>
-
 
             <TextBlock Text="CheckoutPro" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1"/>
 
             <Grid Grid.Column="2">
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0" Click="ButtonHeaderSettings_Click">
-                    <Grid>
-                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
-                        <Icons:SymbolIcon Symbol="Settings" />
-                    </Grid>
+                    <Icons:SymbolIcon Symbol="Settings" />
                 </Button>
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0" Click="ButtonHeaderInfo_Click">
-                    <Grid>
-                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" />
-                        <Icons:SymbolIcon Symbol="Info" />
-                    </Grid>
+                    <Icons:SymbolIcon Symbol="Info" />
                 </Button>
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
-                    <!--<Grid>
-                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5"/>
-                        <Icons:SymbolIcon Symbol="ArrowExit" />
-                    </Grid>-->
-
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
@@ -103,16 +83,13 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="BackgroundRectangle" Property="Fill" Value="Red"/>
+                                    <Setter TargetName="BackgroundRectangle" Property="Fill" Value="#E74856"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Button.Template>
-
                 </Button>
             </Grid>
-
-
 
 
             <Grid.Effect>
@@ -140,7 +117,7 @@
 
                 <Grid Grid.Row="0"/>
 
-                <GroupBox Header="Produkte" Grid.Row="0" Grid.ColumnSpan="2">
+                <GroupBox Header="Produkte" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Transparent">
                     <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -183,65 +160,74 @@
 
             </Grid>
 
-            <GridSplitter Grid.Column="1" Width="15" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
+            <!--<GridSplitter Grid.Column="1" Width="15" VerticalAlignment="Stretch" HorizontalAlignment="Center" />-->
+            <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
 
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0"/>
 
 
+                <DataGrid Grid.Row="0" x:Name="DataGridPurchase" 
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="False" 
+                          CanUserDeleteRows="False"
+                          CanUserResizeRows="False"
+                          CanUserReorderColumns="False"
+                          IsReadOnly="True"
+                          Foreground="Black"
+                          Background="White"
+                          BorderBrush="Transparent" 
+                          VerticalGridLinesBrush="Transparent" 
+                          HorizontalGridLinesBrush="LightGray"
+                          HeadersVisibility="Column" 
+                          RowHeight="32" 
+                          ColumnHeaderHeight="30">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header=" M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>
+                        <DataGridTextColumn Header=" Name" Binding="{Binding Name}" Width="*" FontSize="18" />
+                        <DataGridTextColumn Header=" Preis" Binding="{Binding Preis}" Width="80" FontSize="18"/>
+                    </DataGrid.Columns>
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#ffffff" />
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Resources>
+                </DataGrid>
 
 
-
-
-                <GroupBox Grid.Row="2" Header="Vorgang" >
-                    <!--<TextBox Text="1x Produkt A 3,00€" BorderBrush="Transparent" Name="TextBoxCurrentPurchase"/>-->
-                    <DataGrid x:Name="DataGridPurchase" AutoGenerateColumns="False" CanUserAddRows="False" Background="Transparent" BorderBrush="Transparent" HeadersVisibility="Column" RowHeight="32" VerticalGridLinesBrush="Transparent" ColumnHeaderHeight="30" >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="M" Binding="{Binding Anzahl}" Width="40" FontSize="18" FontWeight="Bold"/>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" FontSize="18" />
-                            <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" Width="80" FontSize="18"/>
-                        </DataGrid.Columns>
-
-                    </DataGrid>
-                </GroupBox>
-
-                <GroupBox Grid.Row="3" Header="Summe">
+                <GroupBox Grid.Row="1" Header="Summe">
                     <TextBlock Text="0.00€" FontSize="36" HorizontalAlignment="Right" Name="TextBlockSummePurchase"/>
                 </GroupBox>
-
-                <GroupBox Grid.Row="4" Header="Drucken" >
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button BorderThickness="0" Width="112" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
-                            <Grid>
-                                <Rectangle Width="110" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray"/>
-                                <Icons:SymbolIcon Symbol="Delete" Margin="0,0,0,0" FontSize="32"/>
-                            </Grid>
-                        </Button>
-                        <Button BorderThickness="0" Width="252" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
-                            <Grid>
-                                <Rectangle Width="250" Height="50" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
-                                <Icons:SymbolIcon Symbol="Print" Margin="0,0,0,0" FontSize="32"/>
-                            </Grid>
-                        </Button>
-                    </StackPanel>
-
-
-                </GroupBox>
-
-
-
+                
+                
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                    <Button BorderThickness="0" Width="127" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
+                        <Grid>
+                            <Rectangle Width="125" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
+                            <Icons:SymbolIcon Symbol="Delete" Margin="0,0,0,0" FontSize="24"/>
+                        </Grid>
+                    </Button>
+                    <Button BorderThickness="0" Width="252" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
+                        <Grid>
+                            <Rectangle Width="250" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#63bb66"/>
+                            <Icons:SymbolIcon Symbol="Print" Margin="0,0,0,0" FontSize="32"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
             </Grid>
-
-
-
         </Grid>
     </Grid>
 </Window>
