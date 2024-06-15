@@ -117,44 +117,44 @@
 
                 <Grid Grid.Row="0"/>
 
-                <GroupBox Header="Produkte" Grid.Row="0" Grid.ColumnSpan="2" BorderBrush="Transparent">
-                    <ListBox d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Width="230" Height="100">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                <ListBox Grid.Row="0" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="230" Height="100">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                                    <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="2" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
-                                    <TextBlock Text="{Binding Name}" Foreground="{Binding BorderColor}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
-                                    <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
-                                    <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />-->
+                                <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="2" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
+                                <TextBlock Text="{Binding Name}" Foreground="{Binding BorderColor}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
+                                <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
+                                <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />-->
 
-                                </Grid>
-                            </DataTemplate>
+                            </Grid>
+                        </DataTemplate>
 
-                        </ListBox.ItemTemplate>
-
-
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" ItemWidth="240"/>
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
+                    </ListBox.ItemTemplate>
 
 
-                        <ListBox.GroupStyle>
-                            <GroupStyle>
-                                <GroupStyle.HeaderTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Text="{Binding Name}" FontSize="20" Padding="10,5" />
-                                    </DataTemplate>
-                                </GroupStyle.HeaderTemplate>
-                            </GroupStyle>
-                        </ListBox.GroupStyle>
-                    </ListBox>
-                </GroupBox>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" ItemWidth="240"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+
+                    <ListBox.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Expander Header="{Binding Name}" FontSize="20" Padding="10,5" IsExpanded="True">
+                                        <ItemsPresenter />
+                                    </Expander>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListBox.GroupStyle>
+                </ListBox>
 
 
 
