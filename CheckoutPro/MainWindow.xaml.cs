@@ -133,18 +133,17 @@ namespace CheckoutPro
             if (ToggleButtonEditProduct.IsChecked == true)
             {
                 ToggleButtonDeleteProduct.IsChecked = false;
-                //ProgressBarBottomMainWindow.Value = 100;
-                //ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
-                //TextBlockLogOutputMainwindow.Text = "Produkte Bearbeiten Aktiv";
+
+
+                RectangleInfoManipulation.Fill = Brushes.Yellow;
+                SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Delete;
+                TextblockInfoManipulation.Text = "Bearbeitung Aktiv";
+                HeaderHint.Visibility = Visibility.Visible;
             }
             else
             {
-                //ProgressBarBottomMainWindow.Value = 0;
-                //ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
-                //TextBlockLogOutputMainwindow.Text = "OK";
-
+                HeaderHint.Visibility = Visibility.Collapsed;
             }
-
         }
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
@@ -152,18 +151,15 @@ namespace CheckoutPro
             if(ToggleButtonDeleteProduct.IsChecked == true)
             {
                 ToggleButtonEditProduct.IsChecked = false;
-                //ProgressBarBottomMainWindow.Value = 100;
-                //ProgressBarBottomMainWindow.Foreground = Brushes.Red;
-                //TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
 
-                //TODO Funktioniert noch nicht / Löschen von Items
+                RectangleInfoManipulation.Fill = Brushes.Red;
+                SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Delete;
+                TextblockInfoManipulation.Text = "Löschen Aktiv";
+                HeaderHint.Visibility = Visibility.Visible;
             }
             else
             {
-                //ProgressBarBottomMainWindow.Value = 0;
-                //ProgressBarBottomMainWindow.Foreground = Brushes.Gray;
-                //TextBlockLogOutputMainwindow.Text = "OK";
-
+                HeaderHint.Visibility = Visibility.Collapsed;
             }
         }
 
