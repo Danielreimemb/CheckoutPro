@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:CheckoutPro"
         xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing" WindowStyle="None" >
-
+        Title="CheckoutPro" Height="768" Width="1366" Closing="Window_Closing" WindowStyle="None" Left="0" Top="100" >
+    
+    
     <Window.Resources>
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#F2F3F9"/>
@@ -22,13 +23,6 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!--
-        - palette.info.light #64b5f6
-        - palette.info.main  #2196f3
-        - palette.info.dark  #1976d2
-        - #FAE338 <- Yellow
-        -->
 
         <Grid Grid.Row="0" Background="#F2F3F9">
             <Grid.ColumnDefinitions>
@@ -75,19 +69,10 @@
                     <Icons:SymbolIcon Symbol="Info" />
                 </Button>
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Rectangle x:Name="BackgroundRectangle" Width="40" Height="40" RadiusX="5" RadiusY="5" Fill="Transparent"/>
-                                <Icons:SymbolIcon Symbol="ArrowExit" />
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="BackgroundRectangle" Property="Fill" Value="#E74856"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
+                    <Grid>
+                        <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Fill="Transparent"/>
+                        <Icons:SymbolIcon Symbol="ArrowExit" />
+                    </Grid>
                 </Button>
             </Grid>
 
@@ -97,8 +82,9 @@
             </Grid.Effect>
         </Grid>
 
+        
+        <!-- BODY -->
         <Grid Grid.Row="1" Margin="5">
-            <!-- Main -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="10"/>
@@ -106,61 +92,78 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0"/>
-
-                <ListBox Grid.Row="0" Grid.ColumnSpan="2" d:ItemsSource="{d:SampleData}" Name="ListboxMainWindowProducts" SelectionChanged="ListboxMainWindowProducts_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Width="230" Height="100">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
-                                <Rectangle Fill="{Binding BackgroundColor}" Stroke="{Binding BorderColor}" StrokeThickness="2" RadiusX="3" RadiusY="3" Grid.RowSpan="3"/>
-                                <TextBlock Text="{Binding Name}" Foreground="{Binding BorderColor}" Grid.Row="0" FontSize="20" FontWeight="Medium" HorizontalAlignment="Center" Margin="0,10,0,10" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
-                                <!--<TextBlock Text="{Binding Desc}" Grid.Row="1" HorizontalAlignment="Center"/>-->
-                                <!--<TextBlock Text="{Binding Preis, StringFormat={}{0:C}}" Grid.Row="2" Language="de-DE" FontSize="16" FontWeight="Medium" Margin="10,3" HorizontalAlignment="Right" Background="Yellow" Padding="1" VerticalAlignment="Top" />-->
-
-                            </Grid>
-                        </DataTemplate>
-
-                    </ListBox.ItemTemplate>
-
+                <ListBox Grid.ColumnSpan="2" 
+                         d:ItemsSource="{d:SampleData}" 
+                         Name="ListboxMainWindowProducts" 
+                         SelectionChanged="ListboxMainWindowProducts_SelectionChanged" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                         BorderBrush="Transparent" >
 
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal" ItemWidth="240"/>
+                            <WrapPanel Orientation="Horizontal" ItemWidth="230"/>
                         </ItemsPanelTemplate>
                     </ListBox.ItemsPanel>
 
-
                     <ListBox.GroupStyle>
                         <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate>
-                                    <Expander Header="{Binding Name}" FontSize="20" Padding="10,5" IsExpanded="True">
-                                        <ItemsPresenter />
-                                    </Expander>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                <Expander IsExpanded="True"  Padding="-3,5">
+                                                    <Expander.Header>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Normal" FontSize="20"/>
+                                                            <Rectangle Fill="Black" Height="0.3" Width="890"/>
+                                                        </StackPanel>
+                                                    </Expander.Header>
+                                                    <ItemsPresenter />
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
                         </GroupStyle>
                     </ListBox.GroupStyle>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="220" Height="110">
+                                <Rectangle Fill="{Binding BackgroundColor}" 
+                                           Stroke="{Binding BorderColor}" 
+                                           StrokeThickness="1.2" 
+                                           RadiusX="2" 
+                                           RadiusY="2" 
+                                           Margin="-3,0"
+                                           />
+
+
+                                <TextBlock Text="{Binding Name}" 
+                                           Foreground="{Binding BorderColor}" 
+                                           Grid.Row="0" 
+                                           FontSize="20" 
+                                           FontWeight="Medium" 
+                                           HorizontalAlignment="Center" 
+                                           Margin="0,10,0,10" 
+                                           TextWrapping="WrapWithOverflow" 
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+
                 </ListBox>
 
-
-
             </Grid>
-
-            <!--<GridSplitter Grid.Column="1" Width="15" VerticalAlignment="Stretch" HorizontalAlignment="Center" />-->
+            
             <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
 
             <Grid Grid.Column="2">
@@ -206,25 +209,44 @@
                     </DataGrid.Resources>
                 </DataGrid>
 
-
-                <GroupBox Grid.Row="1" Header="Summe">
-                    <TextBlock Text="0.00€" FontSize="36" HorizontalAlignment="Right" Name="TextBlockSummePurchase"/>
+                <GroupBox Grid.Row="1" Header="Summe" BorderThickness="1.2" Foreground="Gray" BorderBrush="{x:Static SystemColors.ControlDarkBrush}" Margin="0,5">
+                    <TextBlock Text="0,00 €" FontSize="36" HorizontalAlignment="Right" Name="TextBlockSummePurchase" FontWeight="Normal" Foreground="Black"/>
                 </GroupBox>
-                
-                
-                
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
                     <Button BorderThickness="0" Width="127" Grid.Column="0" Background="Transparent" Click="ButtonClearQuittung_Click">
-                        <Grid>
-                            <Rectangle Width="125" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
-                            <Icons:SymbolIcon Symbol="Delete" Margin="0,0,0,0" FontSize="24"/>
-                        </Grid>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Rectangle Name="ButtonClearQuittungBackgroundRectangle" Width="125" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" StrokeThickness="0.5" Fill="{x:Static SystemColors.InactiveBorderBrush}"/>
+                                    <Icons:SymbolIcon Symbol="Delete" FontSize="26"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="ButtonClearQuittungBackgroundRectangle" Property="Fill" Value="#E74856"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
                     <Button BorderThickness="0" Width="252" Grid.Column="0" Background="Transparent" Click="ButtonPrintLabel_Click">
-                        <Grid>
-                            <Rectangle Width="250" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#63bb66"/>
-                            <Icons:SymbolIcon Symbol="Print" Margin="0,0,0,0" FontSize="32"/>
-                        </Grid>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Rectangle Name="ButtonPrintLabelBackgroundRectangle" Width="250" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#63bb66" StrokeThickness="0.5"/>
+                                    <Icons:SymbolIcon Symbol="Print" FontSize="32" Foreground="Black"/>
+                                    <!--<Grid.Effect>
+                                            <DropShadowEffect Color="LightGray" BlurRadius="10" ShadowDepth="5"/>
+                                        </Grid.Effect>-->
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="ButtonPrintLabelBackgroundRectangle" Property="Fill" Value="#449C47"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+
                     </Button>
                 </StackPanel>
             </Grid>

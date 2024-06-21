@@ -132,6 +132,7 @@ namespace CheckoutPro
         {
             if (ToggleButtonEditProduct.IsChecked == true)
             {
+                ToggleButtonDeleteProduct.IsChecked = false;
                 //ProgressBarBottomMainWindow.Value = 100;
                 //ProgressBarBottomMainWindow.Foreground = Brushes.Orange;
                 //TextBlockLogOutputMainwindow.Text = "Produkte Bearbeiten Aktiv";
@@ -150,6 +151,7 @@ namespace CheckoutPro
         {
             if(ToggleButtonDeleteProduct.IsChecked == true)
             {
+                ToggleButtonEditProduct.IsChecked = false;
                 //ProgressBarBottomMainWindow.Value = 100;
                 //ProgressBarBottomMainWindow.Foreground = Brushes.Red;
                 //TextBlockLogOutputMainwindow.Text = "Produkte Löschen Aktiv";
