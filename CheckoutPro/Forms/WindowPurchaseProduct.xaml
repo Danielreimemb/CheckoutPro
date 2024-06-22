@@ -34,7 +34,7 @@
 
         <!-- Header -->
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Rectangle Fill="#F2F3F9" Height="50"/>
+            <Rectangle Fill="{x:Static SystemColors.InactiveBorderBrush}" Height="50"/>
             <TextBlock Name="HeaderTitle" Text="Produkt Anzahl" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
         

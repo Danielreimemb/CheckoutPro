@@ -166,9 +166,6 @@ namespace CheckoutPro
         private void ButtonSaveProducts_Click(object sender, RoutedEventArgs e)
         {
             SaveProductstoFile();
-            //System.Windows.Forms.MessageBox.Show("Gespeichert!!!");
-            //TextBlockLogOutputMainwindow.Text = "Gespeichert";
-
         }
 
         #endregion

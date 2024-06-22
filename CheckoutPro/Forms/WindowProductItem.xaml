@@ -6,7 +6,24 @@
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:local="clr-namespace:CheckoutPro.Forms" xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
         mc:Ignorable="d"
-        Title="WindowProductItem" Height="580" Width="720" ResizeMode="NoResize" Topmost="True">
+        Title="WindowProductItem" Height="580" Width="720" Topmost="True" WindowStyle="None">
+
+    <Window.Resources>
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <!--<Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border CornerRadius="5" Background="White" BorderBrush="Gray" BorderThickness="1">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>-->
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -15,11 +32,11 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="260"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <Rectangle Fill="#F2F3F9" Height="50"/>
+            <Rectangle Fill="{x:Static SystemColors.InactiveBorderBrush}" Height="50"/>
             <TextBlock Text="Produkt hinzufügen" Name="TextblockHeader" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
             
@@ -33,78 +50,114 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Row="1" Grid.Column="0" Header="Icon" Visibility="Collapsed">
+                <TextBox Text="" Name="TextBoxIcon" Style="{StaticResource RoundedTextBoxStyle}" />
+            </GroupBox>
+            <GroupBox Grid.Row="1"  Grid.Column="0" Header="Name" Grid.ColumnSpan="2">
+                <TextBox Text="" Name="TextBoxName" Style="{StaticResource RoundedTextBoxStyle}" FontWeight="Medium"/>
+            </GroupBox>
+            
+            <GroupBox Grid.Row="2" Header="Beschreibung" Grid.ColumnSpan="2" Height="160">
+                <TextBox Text="" Name="TextBoxDesc" Style="{StaticResource RoundedTextBoxStyle}"/>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="Gruppe" Grid.ColumnSpan="2">
+                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe" BorderThickness="0" FontSize="16" Padding="5" />
+            </GroupBox>
+            
+            <GroupBox Grid.Row="4" Header="Preis Drucken">
+                <ToggleButton IsChecked="True">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Grid>
+                                <Rectangle x:Name="ToggleButtonBackgroundRectangle" Fill="{x:Static SystemColors.InactiveBorderBrush}" Stroke="gray" StrokeThickness="0.5" Height="30" Width="70" RadiusX="15" RadiusY="15" Margin="3"/>
+                                <Rectangle x:Name="ToggleButtonSwitchRectangle" Fill="gray" Height="30" Width="30" RadiusX="15" RadiusY="15" Margin="9,0,0,0" HorizontalAlignment="Left" Stroke="gray"/>
+                                <TextBlock x:Name="ToggleButtonSwitchText" Text="Nein" Margin="24,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Medium" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="ToggleButtonBackgroundRectangle" Property="Fill" Value="#63bb66"/>
+                                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="Fill" Value="{x:Static SystemColors.InactiveBorderBrush}"/>
+                                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="Margin" Value="0,0,9,0"/>
+                                    <Setter TargetName="ToggleButtonSwitchText" Property="Text" Value="Ja"/>
+                                    <Setter TargetName="ToggleButtonSwitchText" Property="Margin" Value="0,0,24,0"/>
+                                    <Setter TargetName="ToggleButtonSwitchText" Property="Foreground" Value="white"/>
+
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                
+            </GroupBox>
 
 
-            <!--<GroupBox Grid.Row="0" Header="ID">
-                <TextBox Text="" Name="TextBoxID"/>
-            </GroupBox>-->
-            <GroupBox Grid.Row="1" Header="Name" BorderBrush="Transparent">
-                <TextBox Text="" Name="TextBoxName" Height="24"/>
-            </GroupBox>
-            <GroupBox Grid.Row="2" Header="Beschreibung" BorderBrush="Transparent">
-                <TextBox Text="" Name="TextBoxDesc" Height="24"/>
-            </GroupBox>
-            <GroupBox Grid.Row="3" Header="Icon" BorderBrush="Transparent">
-                <TextBox Text="" Name="TextBoxIcon" Height="24"/>
-            </GroupBox>
-            <GroupBox Grid.Row="4" Header="Preis" BorderBrush="Transparent">
+            <GroupBox Grid.Row="4" Header="Preis" Grid.Column="1" Grid.ColumnSpan="1">
                 <Grid>
-                    <TextBox Text="0,00" Name="TextBoxPreis" Padding="5"/>
-                    <TextBlock Text="€" HorizontalAlignment="Right" Padding="5,5" />
+                    <TextBox Text="0,00" Name="TextBoxPreis" FontSize="24" Style="{StaticResource RoundedTextBoxStyle}"/>
+                    <TextBlock Text="€" FontSize="16" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Right" Padding="5,5" />
                 </Grid>
             </GroupBox>
-            <GroupBox Grid.Row="5" Header="Gruppe" BorderBrush="Transparent">
-                <ComboBox IsEditable="True" Text="Sammlung" Name="ComboBoxGruppe" Height="24">
 
-                </ComboBox>
-            </GroupBox>
-            <!--<GroupBox Grid.Row="6" Header="Vorschau">
-                --><!-- Local Preview --><!--
-            </GroupBox>-->
-            
-            
+
         </Grid>
 
 
-        <TabControl Grid.Column="1" Grid.Row="1" Margin="5"  Width="250">
-            <TabItem Header="Hintergrund">
-                <GroupBox Header="Hintergrundfarbe">
-                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Orange"  />
-                </GroupBox>
+        <TabControl Grid.Column="1" Grid.Row="1" Margin="5"  Width="240" TabStripPlacement="Top">
+            <TabItem Header="Hintergrundfarbe" Padding="5">
+                <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightGray" />
             </TabItem>
             
             <TabItem Header="Rahmenfarbe">
-                <GroupBox Header="Rahmenfarbe">
-                    <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Black"  />
-                </GroupBox>
+                <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Black"  />
             </TabItem>
 
+            
         </TabControl>
 
 
-        
-        
+        <Button BorderThickness="0" Width="auto"  Height="75" Background="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,205,0" Click="ButtonExit_Click" Padding="5">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Rectangle Name="ButtonExitRectangle" Width="228" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" StrokeThickness="0.5" Fill="{x:Static SystemColors.InactiveBorderBrush}"/>
+                        <Icons:SymbolIcon Symbol="ArrowExit" Margin="0,0,90,0"/>
+                        <TextBlock Text="Abbrechen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonExitRectangle" Property="Fill" Value="#E74856"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
 
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" HorizontalAlignment="Right">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="1" Click="ButtonSave_Click">
-                <Grid>
-                    <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#4caf50"/>
-                    <Icons:SymbolIcon Symbol="Save" Margin="0,0,90,0"/>
-                    <TextBlock Text="Speichern" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
-                </Grid>
-            </Button>
-            <Button BorderThickness="0" Width="182" Background="Transparent" Grid.Column="0" Click="ButtonExit_Click">
-                <Grid>
-                    <Rectangle Width="180" Height="40" RadiusX="5" RadiusY="5" Stroke="Gray" Fill="#F2F3F9"/>
-                    <Icons:SymbolIcon Symbol="ArrowExit" Margin="0,0,90,0"/>
-                    <TextBlock Text="Abbrechen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
-                </Grid>
-            </Button>
-        </Grid>    
+        </Button>
+
+        <Button BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="364,0,0,0" Click="ButtonSave_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle Name="ButtonOkRectangle" Width="332" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" StrokeThickness="0.5" Fill="#63bb66"/>
+                        <Icons:SymbolIcon Symbol="Add" Margin="0,0,90,0"/>
+                        <TextBlock Text="Hinzufügen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonOkRectangle" Property="Fill" Value="#449C47"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
     </Grid>
 </Window>
