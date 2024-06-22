@@ -23,7 +23,57 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1.2"/>
+            <Setter Property="BorderBrush" Value="{x:Static SystemColors.ControlDarkBrush}"/>
+        </Style>
+        <Style TargetType="colorpicker:StandardColorPicker">
+            <Setter Property="ShowAlpha" Value="False"/>
+        </Style>
+
+        <Style TargetType="TabControl">
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="TabItem">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Margin="10 3"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" CornerRadius="5" Background="{TemplateBinding Background}">
+                            <ContentPresenter ContentSource="Header" Margin="3 4"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="white"/>
+                                <Setter TargetName="Border" Property="CornerRadius" Value="3,3,0,0" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{x:Static SystemColors.ControlDarkBrush}" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1.2,1.2,1.2,0" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Window.Resources>
+    
+    
+    
+    
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -101,7 +151,7 @@
             <GroupBox Grid.Row="4" Header="Preis" Grid.Column="1" Grid.ColumnSpan="1">
                 <Grid>
                     <TextBox Text="0,00" Name="TextBoxPreis" FontSize="24" Style="{StaticResource RoundedTextBoxStyle}"/>
-                    <TextBlock Text="€" FontSize="16" VerticalAlignment="Center" FontWeight="Bold" HorizontalAlignment="Right" Padding="5,5" />
+                    <TextBlock Text="€" FontSize="20" VerticalAlignment="Center" FontWeight="Medium" HorizontalAlignment="Right" Padding="5,5" Foreground="Black" />
                 </Grid>
             </GroupBox>
 
@@ -109,17 +159,28 @@
         </Grid>
 
 
-        <TabControl Grid.Column="1" Grid.Row="1" Margin="5"  Width="240" TabStripPlacement="Top">
-            <TabItem Header="Hintergrundfarbe" Padding="5">
-                <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="LightGray" />
-            </TabItem>
-            
-            <TabItem Header="Rahmenfarbe">
-                <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" Width="180" Height="220" ShowAlpha="False" SelectedColor="Black"  />
-            </TabItem>
+        <GroupBox Grid.Column="1" Grid.Row="1" Header="Elementfarbe" Margin="5">
 
-            
-        </TabControl>
+                <TabControl Grid.Column="1" Grid.Row="1"  Width="240" TabStripPlacement="Top">
+                <TabItem Header="Hintergrundfarbe">
+                    <Border BorderBrush="{x:Static SystemColors.ControlDarkBrush}" BorderThickness="1.2" CornerRadius="0,3,3,3" Margin="0,-3.5,0,0" >
+                        <colorpicker:StandardColorPicker x:Name="ColorpickerItemBackgroundColor" SelectedColor="LightGray"/>
+                    </Border>
+                </TabItem>
+
+                <TabItem Header="Rahmenfarbe">
+                    <Border BorderBrush="{x:Static SystemColors.ControlDarkBrush}" BorderThickness="1.2" CornerRadius="3" Margin="0,-3.5,0,0" >
+                        <colorpicker:StandardColorPicker x:Name="ColorpickerItemBorderColor" SelectedColor="Black"  />
+                    </Border>
+                </TabItem>
+
+
+            </TabControl>
+        </GroupBox>
+        
+        
+
+        
 
 
         <Button BorderThickness="0" Width="auto"  Height="75" Background="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,205,0" Click="ButtonExit_Click" Padding="5">
