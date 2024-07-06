@@ -16,6 +16,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
+
     </Window.Resources>
     
     <Grid>
@@ -107,15 +108,7 @@
                         <Icons:SymbolIcon Symbol="ArrowClockwise" />
                     </Button>
 
-                    <Grid Name="HeaderHint" Visibility="Collapsed">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="42"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Rectangle Name="RectangleInfoManipulation" Fill="Orange" Grid.ColumnSpan="2" Margin="3,3,-10,3" RadiusX="3" RadiusY="3"/>
-                        <TextBlock Name="TextblockInfoManipulation" Grid.Column="1" Text="Bearbeitung Aktiv"  FontSize="16" VerticalAlignment="Center"/>
-                        <Icons:SymbolIcon Name="SymbolInfoManipulation" Symbol="Delete"  Width="42" Grid.Column="0" />
-                    </Grid>
+
                 </StackPanel>
                                 
             </Grid>
@@ -216,8 +209,16 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                
-                
+                <Grid Name="HeaderHint" Grid.Row="0" Visibility="Collapsed" Margin="5"  Height="42" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="42"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Rectangle Name="RectangleInfoManipulation" Fill="#FF4747" Opacity="0.95" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5" Stroke="Black" StrokeThickness="1.5"  />
+                    <TextBlock Name="TextblockInfoManipulation" Grid.Column="1" Text="Bearbeitung Aktiv" FontWeight="Medium"  FontSize="16" VerticalAlignment="Center"/>
+                    <Icons:SymbolIcon Name="SymbolInfoManipulation" Symbol="Delete" Width="42"  Grid.Column="0" IsFilled="True" />
+                </Grid>
+
             </Grid>
             
             <GridSplitter Grid.Column="1" Width="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" />
@@ -264,6 +265,9 @@
                         </Style>
                     </DataGrid.Resources>
                 </DataGrid>
+
+
+
 
                 <GroupBox Grid.Row="1" Header="Summe" BorderThickness="1.2" Foreground="Gray" BorderBrush="{x:Static SystemColors.ControlDarkBrush}" Margin="0,5">
                     <TextBlock Text="0,00 €" FontSize="36" HorizontalAlignment="Right" Name="TextBlockSummePurchase" FontWeight="Normal" Foreground="Black"/>

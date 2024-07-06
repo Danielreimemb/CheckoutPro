@@ -24,7 +24,6 @@ using static CheckoutPro.Class.ClassProduct;
 using static CheckoutPro.Class.ClassMethodsPrinter;
 using System.ComponentModel;
 using System.Windows.Controls.Primitives;
-
 namespace CheckoutPro
 {
     public partial class MainWindow : Window
@@ -135,8 +134,8 @@ namespace CheckoutPro
                 ToggleButtonDeleteProduct.IsChecked = false;
 
 
-                RectangleInfoManipulation.Fill = Brushes.Yellow;
-                SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Delete;
+                RectangleInfoManipulation.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#fff647");
+                SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Edit;
                 TextblockInfoManipulation.Text = "Bearbeitung Aktiv";
                 HeaderHint.Visibility = Visibility.Visible;
             }
@@ -152,7 +151,7 @@ namespace CheckoutPro
             {
                 ToggleButtonEditProduct.IsChecked = false;
 
-                RectangleInfoManipulation.Fill = Brushes.Red;
+                RectangleInfoManipulation.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff4747");
                 SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Delete;
                 TextblockInfoManipulation.Text = "Löschen Aktiv";
                 HeaderHint.Visibility = Visibility.Visible;

@@ -18,6 +18,10 @@
             <Rectangle Fill="#F2F3F9" Height="50"/>
             <TextBlock Text="Einstellungen" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
-        
+
+        <GroupBox Grid.Row="1" Header="Drucker" Grid.ColumnSpan="2">
+            <ComboBox IsEditable="True" Text="Drucker auswählen" Name="ComboBoxDrucker" BorderThickness="0" FontSize="16" Padding="5" />
+        </GroupBox>
+
     </Grid>
 </Window>

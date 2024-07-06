@@ -39,6 +39,7 @@ namespace CheckoutPro.Class
         public string BackgroundColor { get; set; }
         public string BorderColor { get; set; }
         public string Group { get; set; }
+        public bool PrintPrice {  get; set; }
 
     }
 }
