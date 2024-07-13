@@ -4,14 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckoutPro.Forms"
+        xmlns:Icons="clr-namespace:FluentIcons.WPF;assembly=FluentIcons.WPF"
+        
         mc:Ignorable="d"
         Title="WindowSettings" Height="450" Width="800" ResizeMode="NoResize" Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
@@ -22,6 +24,23 @@
         <GroupBox Grid.Row="1" Header="Drucker" Grid.ColumnSpan="2">
             <ComboBox IsEditable="True" Text="Drucker auswählen" Name="ComboBoxDrucker" BorderThickness="0" FontSize="16" Padding="5" />
         </GroupBox>
+
+        <Button BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Right">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle Name="ButtonOkRectangle" Width="332" Height="60" RadiusX="5" RadiusY="5" Stroke="Gray" StrokeThickness="0.5" Fill="#63bb66"/>
+                        <Icons:SymbolIcon Symbol="Save" Margin="0,0,120,0"/>
+                        <TextBlock Text="Übernehmen" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonOkRectangle" Property="Fill" Value="#449C47"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
     </Grid>
 </Window>
