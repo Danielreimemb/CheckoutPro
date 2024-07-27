@@ -21,7 +21,7 @@
             <TextBlock Text="Einstellungen" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
 
-        <GroupBox Grid.Row="1" Header="Drucker" Grid.ColumnSpan="2">
+        <GroupBox Grid.Row="1" Header="Drucker" Grid.ColumnSpan="2" Margin="10">
             <ComboBox IsEditable="True" Text="Drucker auswählen" Name="ComboBoxDrucker" BorderThickness="0" FontSize="16" Padding="5" />
         </GroupBox>
 

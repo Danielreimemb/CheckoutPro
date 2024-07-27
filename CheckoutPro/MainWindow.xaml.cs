@@ -35,9 +35,6 @@ namespace CheckoutPro
 
 
 
-
-
-
         public MainWindow()
         {
             InitializeComponent();
@@ -88,30 +85,6 @@ namespace CheckoutPro
 
 
         #endregion
-
-
-
-
-
-
-
-
-
-
-        private void ButtonReloadProducts_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-
-
-
-
-
-
-
-
 
 
 
