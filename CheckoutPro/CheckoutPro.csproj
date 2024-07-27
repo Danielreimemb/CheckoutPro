@@ -110,7 +110,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class\ClassMethodsDatabase.cs" />
     <Compile Include="Class\ClassMethodsPrinter.cs" />
     <Compile Include="Class\ClassProduct.cs" />
     <Compile Include="Class\ClassQuittung.cs" />

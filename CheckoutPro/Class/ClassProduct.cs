@@ -15,22 +15,7 @@ namespace CheckoutPro.Class
     public class ClassProduct
     {
 
-        public ClassProduct()
-        {
-        }
-
-        //public ClassProduct(string vID, string vName, string vDesc, string vIcon, double vPreis, string vBackgroundColor, string vBorderColor, string vGroup)
-        //{
-        //    this.ID = vID;
-        //    this.Name = vName;
-        //    this.Desc = vDesc;
-        //    this.Icon = vIcon;
-        //    this.Preis = vPreis;
-        //    this.BackgroundColor = vBackgroundColor;
-        //    this.BorderColor = vBorderColor;
-        //    this.Group = vGroup;
-        //}
-
+        public ClassProduct() { }
         public string ID { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
@@ -39,7 +24,7 @@ namespace CheckoutPro.Class
         public string BackgroundColor { get; set; }
         public string BorderColor { get; set; }
         public string Group { get; set; }
-        public bool PrintPrice {  get; set; }
+        public bool PrintPriceonLabel {  get; set; }
 
     }
 }

@@ -15,17 +15,7 @@ namespace CheckoutPro.Class
         public static string Anzahl;
         public static string Produkt;
         public static string Preis;
-
-
-        private void SearchPrinter()
-        {
-
-        }
-
-        private void PrinterSettings()
-        {
-
-        }
+        public static bool PrintPriceonLabel;
 
         public void Print(string lAnzahl, string lProdukt, string lPreis)
         {
@@ -86,14 +76,11 @@ namespace CheckoutPro.Class
             string Produkt = "TestName";
             string Preis = "3,00€";
 
-            // Get the graphics object to work with
             Graphics g = e.Graphics;
 
-            // Get the dimensions of the page
             float pageWidth = e.PageSettings.PrintableArea.Width;
             float pageHeight = e.PageSettings.PrintableArea.Height;
 
-            // Set up fonts
             Font font = new Font("Consolas", 10);
             Font largeFont = new Font("Consolas", 18);
             Font boldFont = new Font("Consolas", 18, FontStyle.Bold);

@@ -22,6 +22,7 @@ namespace CheckoutPro.Forms
         public static WindowPurchaseProduct windowPurchaseProductinstance;
         public int ProductNumber;
         public double ProductPrice;
+        public bool PrintPriceonLabel;
 
         bool firstdigit = false;
 
@@ -42,18 +43,12 @@ namespace CheckoutPro.Forms
             {
                 TextBoxValueProduct.Text = "1x";
                 firstdigit = true;
-
             }
             else
             {
                 TextBoxValueProduct.Text = TextBoxValueProduct.Text.Replace("x","") + "1x";
-
-                
             }
-
             MethodInputChanged();
-
-
         }
 
         private void Button_2_Click(object sender, RoutedEventArgs e)
@@ -237,6 +232,7 @@ namespace CheckoutPro.Forms
             classQuittung.Name = TextBlockProductName.Text;
             classQuittung.Preis = TextBlockProductPreis.Text;
             classQuittung.Summe = TextBlockProductPreisSumme.Text;
+            classQuittung.PrintPriceonLabel = PrintPriceonLabel;
 
             MainWindow.mainWindowInstance.classQuittungs.Add(classQuittung);
             MainWindow.mainWindowInstance.DataGridPurchase.Items.Refresh();

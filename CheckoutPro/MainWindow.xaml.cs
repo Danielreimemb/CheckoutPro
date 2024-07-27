@@ -51,16 +51,6 @@ namespace CheckoutPro
 
 
 
-
-
-
-
-
-
-
-
-
-
         #region MainWindow Header Buttons
 
         private void ButtonHeaderSettings_Click(object sender, EventArgs e)
@@ -149,9 +139,7 @@ namespace CheckoutPro
             
             foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
             {
-                //System.Windows.MessageBox.Show(classQuittung.Anzahl + classQuittung.Name + classQuittung.Preis);
                 ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-                //classMethodsPrinter.Print("2x","Super Geiles Produkt","3,00€");
                 classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis);
             }
 
@@ -185,7 +173,7 @@ namespace CheckoutPro
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductBeschreibung.Text = produkt.Desc;
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
                     WindowPurchaseProduct.windowPurchaseProductinstance.TextBlockProductPreisSumme.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
-
+                    WindowPurchaseProduct.windowPurchaseProductinstance.PrintPriceonLabel = produkt.PrintPriceonLabel;
                     WindowPurchaseProduct.windowPurchaseProductinstance.ProductPrice = produkt.Preis;
                 }
 
@@ -219,8 +207,9 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.TextBoxName.Text = produkt.Name;
                     WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
-                    WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString();
+                    WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture); // "C", CultureInfo.CurrentCulture <- Funktioniert nicht weil der wert von string to double convertiert wird ToDo
                     WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
+                    WindowProductItem.windowProductItemInstance.ToggleButtonPrintPriceonLabel.IsChecked = produkt.PrintPriceonLabel;
                 }
 
 
@@ -289,48 +278,55 @@ namespace CheckoutPro
 
         private void SaveProductstoFile()
         {
-            StreamWriter myOutputStream = new StreamWriter("Database.csv");
+            string filePathDatabase = "Database.csv";
+            if (!File.Exists(filePathDatabase))
+            {
+                return;
+            }
+            
+            StreamWriter streamWriterDatabase = new StreamWriter(filePathDatabase);
+
             foreach (ClassProduct produkt in ListboxMainWindowProducts.Items)
             {
-                myOutputStream.WriteLine(produkt.ID + ";" + produkt.Name + ";" + produkt.Desc + ";" + produkt.Icon + ";" + produkt.Preis.ToString() + ";" + produkt.BackgroundColor + ";" + produkt.BorderColor + ";" + produkt.Group ) ;
+                //myOutputStream.WriteLine(produkt.ID + ";" + produkt.Name + ";" + produkt.Desc + ";" + produkt.Icon + ";" + produkt.Preis.ToString() + ";" + produkt.BackgroundColor + ";" + produkt.BorderColor + ";" + produkt.Group + ";" + produkt.PrintPriceonLabel);
+                string produktDaten = $"{produkt.ID};{produkt.Name};{produkt.Desc};{produkt.Icon};{produkt.Preis};{produkt.BackgroundColor};{produkt.BorderColor};{produkt.Group};{produkt.PrintPriceonLabel}";
+                streamWriterDatabase.WriteLine(produktDaten);
             }
-            myOutputStream.Close();
+            streamWriterDatabase.Close();
         }
 
         private void LoadProductsfromFile()
         {
             
-            string curFile = @"Database.csv";
-            if (File.Exists(curFile))
+            string filePathDatabase = @"Database.csv";
+            if (!File.Exists(filePathDatabase))
             {
-                StreamReader myInputStream = new StreamReader("Database.csv");
-                while (!myInputStream.EndOfStream)
-                {
-                    string line = myInputStream.ReadLine();
-                    string[] values = line.Split(';');
-                    ClassProduct product = new ClassProduct();
-                    product.ID = values[0];
-                    product.Name = values[1];
-                    product.Desc = values[2];
-                    product.Icon = values[3];
-                    product.Preis = Convert.ToDouble(values[4]);
-                    product.BackgroundColor = values[5];
-                    product.BorderColor = values[6];
-                    product.Group = values[7];
-
-
-                    classProducts.Add(product);
-                    ListboxMainWindowProducts.Items.Refresh();
-                    GroupListBox();
-
-
-                }
-                myInputStream.Close();
+                return;
             }
-            else 
+
+            StreamReader myInputStream = new StreamReader(filePathDatabase);
+            while (!myInputStream.EndOfStream)
             {
-                System.Windows.Forms.MessageBox.Show("Datenbank konnte nicht gefunden werden");
+                string line = myInputStream.ReadLine();
+                string[] values = line.Split(';');
+                ClassProduct product = new ClassProduct();
+                product.ID = values[0];
+                product.Name = values[1];
+                product.Desc = values[2];
+                product.Icon = values[3];
+                product.Preis = Convert.ToDouble(values[4]);
+                product.BackgroundColor = values[5];
+                product.BorderColor = values[6];
+                product.Group = values[7];
+                product.PrintPriceonLabel = values[8].Contains("True");
+
+                classProducts.Add(product);
+                ListboxMainWindowProducts.Items.Refresh();
+                GroupListBox();
+
+
             }
+            myInputStream.Close();
         }
 
         public void GroupListBox()
@@ -344,14 +340,9 @@ namespace CheckoutPro
             double SummeProducts = 0;
             foreach (ClassQuittung quittung in DataGridPurchase.Items)
             {
-
-
                 SummeProducts = Convert.ToDouble(quittung.Summe.Replace("€","")) + SummeProducts;
-
             }
             TextBlockSummePurchase.Text = SummeProducts.ToString("C", CultureInfo.CurrentCulture);
-
-
         }
 
 

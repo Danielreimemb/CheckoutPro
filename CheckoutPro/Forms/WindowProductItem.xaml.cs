@@ -1,8 +1,11 @@
 ﻿using CheckoutPro.Class;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,9 +20,6 @@ using static CheckoutPro.Class.ClassProduct;
 
 namespace CheckoutPro.Forms
 {
-    /// <summary>
-    /// Interaktionslogik für WindowProductItem.xaml
-    /// </summary>
     public partial class WindowProductItem : Window
     {
         public static WindowProductItem windowProductItemInstance;
@@ -27,12 +27,7 @@ namespace CheckoutPro.Forms
         public WindowProductItem()
         {
             InitializeComponent();
-
             windowProductItemInstance = this;
-
-
-            
-
 
 
             foreach (ClassProduct produkt in MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items)
@@ -40,7 +35,6 @@ namespace CheckoutPro.Forms
                 if (!ComboBoxGruppe.Items.Contains(produkt.Group))
                 {
                     ComboBoxGruppe.Items.Add(produkt.Group);
-
                 }
             }
 
@@ -59,14 +53,14 @@ namespace CheckoutPro.Forms
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             ClassProduct produkt = new ClassProduct();
-            //produkt.ID = TextBoxID.Text;
             produkt.Name = TextBoxName.Text;
             produkt.Desc = TextBoxDesc.Text;
             produkt.Icon = TextBoxIcon.Text;
-            produkt.Preis = Convert.ToDouble(TextBoxPreis.Text);
+            produkt.Preis = Convert.ToDouble(TextBoxPreis.Text.Replace("€",""));
             produkt.BackgroundColor = ColorpickerItemBackgroundColor.SelectedColor.ToString();
             produkt.BorderColor = ColorpickerItemBorderColor.SelectedColor.ToString();
             produkt.Group = ComboBoxGruppe.Text;
+            produkt.PrintPriceonLabel = ToggleButtonPrintPriceonLabel.IsChecked.Value;
 
             MainWindow.mainWindowInstance.classProducts.Add(produkt);
             MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Refresh();

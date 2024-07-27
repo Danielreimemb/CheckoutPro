@@ -12,7 +12,7 @@ namespace CheckoutPro.Class
         public string Name { get; set; }
         public string Preis { get; set; }
         public string Summe { get; set; }
-        public bool PrintPrice { get; set; }
+        public bool PrintPriceonLabel { get; set; }
 
     }
 }
