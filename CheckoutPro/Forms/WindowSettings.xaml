@@ -8,6 +8,35 @@
         
         mc:Ignorable="d"
         Title="WindowSettings" Height="450" Width="800" ResizeMode="NoResize" Topmost="True">
+
+    <Window.Resources>
+        <ControlTemplate x:Key="ToggleButtonTemplate" TargetType="ToggleButton">
+            <Grid>
+                <Rectangle x:Name="ToggleButtonBackgroundRectangle" Fill="{x:Static SystemColors.InactiveBorderBrush}" Stroke="gray" StrokeThickness="0.5" Height="20" Width="50" RadiusX="10" RadiusY="10" Margin="3"/>
+                <Rectangle x:Name="ToggleButtonSwitchRectangle" Fill="gray" Height="20" Width="20" RadiusX="10" RadiusY="10" Margin="3,0,0,0" HorizontalAlignment="Left" Stroke="gray"/>
+                <TextBlock x:Name="ToggleButtonSwitchText" Text="Nein" Margin="15,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Medium" />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter TargetName="ToggleButtonBackgroundRectangle" Property="Fill" Value="#63bb66"/>
+                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="Fill" Value="{x:Static SystemColors.InactiveBorderBrush}"/>
+                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="HorizontalAlignment" Value="Right"/>
+                    <Setter TargetName="ToggleButtonSwitchRectangle" Property="Margin" Value="0,0,3,0"/>
+                    <Setter TargetName="ToggleButtonSwitchText" Property="Text" Value="Ja"/>
+                    <Setter TargetName="ToggleButtonSwitchText" Property="Margin" Value="0,0,15,0"/>
+                    <Setter TargetName="ToggleButtonSwitchText" Property="Foreground" Value="white"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style TargetType="ToggleButton">
+            <Setter Property="Template" Value="{StaticResource ToggleButtonTemplate}" />
+
+        </Style>
+    </Window.Resources>
+    
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,11 +50,45 @@
             <TextBlock Text="Einstellungen" TextAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Medium"/>
         </Grid>
 
-        <GroupBox Grid.Row="1" Header="Drucker" Grid.ColumnSpan="2" Margin="10">
+        <GroupBox Grid.Row="1" Header="Standarddrucker" Grid.ColumnSpan="2" Margin="10,0">
             <ComboBox IsEditable="True" Text="Drucker auswählen" Name="ComboBoxDrucker" BorderThickness="0" FontSize="16" Padding="5" />
         </GroupBox>
 
-        <Button BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Right">
+        <GroupBox Grid.Row="2" Header="Druckeinstellungen" Margin="10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+
+                <ToggleButton Name="ToggleButtonPrintseperatLabels"  Grid.Row="0" Grid.Column="0"/>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="0" Grid.Column="1" Padding="10,0" Text="Produkte auf Quittung zusammenfassen"/>
+
+                <ToggleButton Grid.Row="1" Grid.Column="0"/>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="1" Grid.Column="1" Padding="10,0" Text="Datenbank beim schließen Speichern"/>
+
+                <ToggleButton Grid.Row="2" Grid.Column="0"/>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="2" Grid.Column="1" Padding="10,0" Text="b"/>
+
+                <ToggleButton Grid.Row="3" Grid.Column="0"/>
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="3" Grid.Column="1" Padding="10,0" Text="c"/>
+
+            </Grid>
+
+                
+
+        </GroupBox>
+
+        <Button BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Right">
             <Button.Template>
                 <ControlTemplate>
                     <Grid>

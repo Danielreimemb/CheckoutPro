@@ -24,6 +24,7 @@ using static CheckoutPro.Class.ClassProduct;
 using static CheckoutPro.Class.ClassMethodsPrinter;
 using System.ComponentModel;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 namespace CheckoutPro
 {
     public partial class MainWindow : Window
@@ -101,10 +102,13 @@ namespace CheckoutPro
                 SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Edit;
                 TextblockInfoManipulation.Text = "Bearbeitung Aktiv";
                 HeaderHint.Visibility = Visibility.Visible;
+
             }
             else
             {
                 HeaderHint.Visibility = Visibility.Collapsed;
+
+
             }
         }
 
@@ -140,7 +144,7 @@ namespace CheckoutPro
             foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
             {
                 ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis);
+                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis,classQuittung.PrintPriceonLabel);
             }
 
             classQuittungs.Clear();

@@ -16,7 +16,6 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
         </Style>
-
     </Window.Resources>
     
     <Grid>
@@ -44,59 +43,10 @@
 
 
                     <ToggleButton Name="ToggleButtonEditProduct" BorderThickness="0" Width="auto" Grid.Column="0" Background="Transparent" Click="ButtonEditProduct_Click">
-                        <!--<ToggleButton.Template>
-                            <ControlTemplate TargetType="ToggleButton">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="42"/>
-                                        <ColumnDefinition Width="0" Name="TextBlockBearbeitungsmodusHeader" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Rectangle Name="RectangleIconSymbolEdit" Fill="Orange" Grid.ColumnSpan="2" RadiusX="3" RadiusY="3" Visibility="Collapsed"/>
-                                    <Icons:SymbolIcon Name="IconSymbolEdit" Symbol="Edit" Width="42" Grid.Column="0" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="1" Text="Bearbeitungsmodus aktiv" VerticalAlignment="Center" FontSize="16" />
-                                </Grid>
-
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsChecked" Value="True">
-                                        <Setter TargetName="TextBlockBearbeitungsmodusHeader" Property="Width" Value="190"/>
-                                        <Setter TargetName="RectangleIconSymbolEdit" Property="Visibility" Value="Visible"/>
-                                        <Setter TargetName="RectangleIconSymbolEdit" Property="Fill" Value="Orange"/>
-                                    </Trigger>
-
-                                </ControlTemplate.Triggers>
-
-                            </ControlTemplate>
-                        </ToggleButton.Template>-->
                         <Icons:SymbolIcon Symbol="Edit" Width="42" Grid.Column="0" />
-
                     </ToggleButton>
-                    
+
                     <ToggleButton Name="ToggleButtonDeleteProduct" BorderThickness="0" Width="auto" Grid.Column="0" Background="Transparent" Click="ButtonDeleteProduct_Click">
-                        <!--<ToggleButton.Template>
-                            <ControlTemplate TargetType="ToggleButton">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="42"/>
-                                        <ColumnDefinition Width="0" Name="TextBlockDeleteHeader" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Rectangle Name="RectangleIconSymbolDelete" Fill="Orange" Grid.ColumnSpan="2" RadiusX="3" RadiusY="3" Visibility="Collapsed"/>
-                                    <Icons:SymbolIcon Name="IconSymbolEdit" Symbol="Delete" Width="42" Grid.Column="0" HorizontalAlignment="Left" />
-                                    <TextBlock Grid.Column="1" Text="Löschen aktiv" VerticalAlignment="Center" FontSize="16" />
-                                </Grid>
-
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsChecked" Value="True">
-                                        <Setter TargetName="TextBlockDeleteHeader" Property="Width" Value="120"/>
-                                        <Setter TargetName="RectangleIconSymbolDelete" Property="Visibility" Value="Visible"/>
-                                        <Setter TargetName="RectangleIconSymbolDelete" Property="Fill" Value="red"/>
-                                    </Trigger>
-
-                                </ControlTemplate.Triggers>
-
-                            </ControlTemplate>
-                        </ToggleButton.Template>-->
                         <Icons:SymbolIcon Symbol="Delete" Width="42" Grid.Column="0" />
                     </ToggleButton>
 
@@ -214,10 +164,11 @@
                         <ColumnDefinition Width="42"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Rectangle Name="RectangleInfoManipulation" Fill="#FF4747" Opacity="0.95" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5" Stroke="Black" StrokeThickness="1.5"  />
-                    <TextBlock Name="TextblockInfoManipulation" Grid.Column="1" Text="Bearbeitung Aktiv" FontWeight="Medium"  FontSize="16" VerticalAlignment="Center"/>
+                    <Rectangle Name="RectangleInfoManipulation" Grid.ColumnSpan="2" RadiusX="5" RadiusY="5" Stroke="Black" StrokeThickness="1"  />
+                    <TextBlock Name="TextblockInfoManipulation" Grid.Column="1" Text="Bearbeitung Aktiv" FontWeight="Medium"  FontSize="15" VerticalAlignment="Center"/>
                     <Icons:SymbolIcon Name="SymbolInfoManipulation" Symbol="Delete" Width="42"  Grid.Column="0" IsFilled="True" />
                 </Grid>
+
 
             </Grid>
             
