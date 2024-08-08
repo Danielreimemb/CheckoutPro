@@ -22,9 +22,12 @@ using System.Windows.Shapes;
 using System.Xml.Linq;
 using static CheckoutPro.Class.ClassProduct;
 using static CheckoutPro.Class.ClassMethodsPrinter;
+using static CheckoutPro.Class.ClassAppSettings;
 using System.ComponentModel;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
+using System.Xml.Serialization;
+
 namespace CheckoutPro
 {
     public partial class MainWindow : Window
@@ -34,6 +37,9 @@ namespace CheckoutPro
         public List<ClassProduct> classProducts {  get; set; }
         public List<ClassQuittung> classQuittungs { get; set; }
 
+        private const string SettingsFilePath = "settings.xml";
+        private ClassAppSettings _settings;
+
 
 
         public MainWindow()
@@ -41,47 +47,33 @@ namespace CheckoutPro
             InitializeComponent();
             mainWindowInstance = this;
 
+            _settings = ClassAppSettings.Load(SettingsFilePath);
+            this.WindowState = _settings.StartFullscreen ? WindowState.Maximized : this.WindowState;
+
             classProducts = new List<ClassProduct>();
             classQuittungs = new List<ClassQuittung>();
 
             ListboxMainWindowProducts.ItemsSource = classProducts;
             DataGridPurchase.ItemsSource = classQuittungs;
 
-            NormalStartup();
+            LoadProductsfromFile();
         }
 
 
 
-        #region MainWindow Header Buttons
+
+
 
         private void ButtonHeaderSettings_Click(object sender, EventArgs e)
         {
             WindowSettings windowSettings = new WindowSettings();
             windowSettings.Show();
         }
-        private void ButtonHeaderInfo_Click(object sender, RoutedEventArgs e)
-        {
-            WindowSoftwareInfo windowSoftwareInfo = new WindowSoftwareInfo();
-            windowSoftwareInfo.Show();
-        }
-        private void ButtonHeaderUser_Click(object sender, RoutedEventArgs e)
-        {
-            WindowUserInfo windowUserInfo = new WindowUserInfo();
-            windowUserInfo.Show();
-        }
+
         private void ButtonExitApplication_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-
-        #endregion
-
-
-
-
-
-        #region MainWindow Produkte Buttons über Listbox
 
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
         {
@@ -96,8 +88,6 @@ namespace CheckoutPro
             if (ToggleButtonEditProduct.IsChecked == true)
             {
                 ToggleButtonDeleteProduct.IsChecked = false;
-
-
                 RectangleInfoManipulation.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#fff647");
                 SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Edit;
                 TextblockInfoManipulation.Text = "Bearbeitung Aktiv";
@@ -107,8 +97,6 @@ namespace CheckoutPro
             else
             {
                 HeaderHint.Visibility = Visibility.Collapsed;
-
-
             }
         }
 
@@ -117,7 +105,6 @@ namespace CheckoutPro
             if(ToggleButtonDeleteProduct.IsChecked == true)
             {
                 ToggleButtonEditProduct.IsChecked = false;
-
                 RectangleInfoManipulation.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff4747");
                 SymbolInfoManipulation.Symbol = FluentIcons.Common.Symbol.Delete;
                 TextblockInfoManipulation.Text = "Löschen Aktiv";
@@ -134,33 +121,23 @@ namespace CheckoutPro
             SaveProductstoFile();
         }
 
-        #endregion
-
-        #region MainWindow Zusammenfassung Buttons über Zusammenfassung DataGrid
-
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
-            
-            foreach(ClassQuittung classQuittung in DataGridPurchase.Items)
+            _settings = ClassAppSettings.Load(SettingsFilePath);
+            bool PrintSeperateLabels = _settings.PrintseperatLabels;
+
+
+            foreach (ClassQuittung classQuittung in DataGridPurchase.Items)
             {
                 ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis,classQuittung.PrintPriceonLabel);
+                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis,classQuittung.PrintPriceonLabel, PrintSeperateLabels);
             }
 
             classQuittungs.Clear();
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
 
-
-
         }
-
-
-
-        #endregion
-
-        #region MainWindow Background Worker
-
 
         private void ListboxMainWindowProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -229,19 +206,32 @@ namespace CheckoutPro
         {
             // FormatPurchaselLine("Produktname", "3,00€", "22x");
 
-            string s1 = ProductCount.PadRight(4);
-            string s2 = ProductName.PadRight(24);
-            string s3 = ProductPrice.PadLeft(8);
-
-            string result = s1 + s2 + s3;
-
+            string result = ProductCount.PadRight(4) + ProductName.PadRight(24) + ProductPrice.PadLeft(8);
             return result;
         }
 
 
+        private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            DataGridPurchase.Items.Refresh();
+            UpdateSumme();
+        }
+
+        private void ButtonClearQuittung_Click(object sender, RoutedEventArgs e)
+        {
+            classQuittungs.Clear();
+            DataGridPurchase.Items.Refresh();
+            UpdateSumme();
+        }
 
 
 
+        public void UpdateSettings()
+        {
+            _settings = ClassAppSettings.Load(SettingsFilePath);
+            mainWindowInstance.WindowState = _settings.StartFullscreen ? WindowState.Maximized : WindowState.Normal;
+        }
 
 
 
@@ -256,6 +246,9 @@ namespace CheckoutPro
         {
             if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "Checkout Pro", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
+                _settings = ClassAppSettings.Load(SettingsFilePath);
+                if (_settings.SaveDatabaseonClose) SaveProductstoFile();
+
                 System.Windows.Forms.Application.Exit();
             }
             else
@@ -265,17 +258,6 @@ namespace CheckoutPro
         }
 
 
-        #endregion
-
-
-        // -- Methods --
-        #region Methods
-
-
-        private void NormalStartup()
-        {
-            LoadProductsfromFile();
-        }
 
 
 
@@ -292,7 +274,6 @@ namespace CheckoutPro
 
             foreach (ClassProduct produkt in ListboxMainWindowProducts.Items)
             {
-                //myOutputStream.WriteLine(produkt.ID + ";" + produkt.Name + ";" + produkt.Desc + ";" + produkt.Icon + ";" + produkt.Preis.ToString() + ";" + produkt.BackgroundColor + ";" + produkt.BorderColor + ";" + produkt.Group + ";" + produkt.PrintPriceonLabel);
                 string produktDaten = $"{produkt.ID};{produkt.Name};{produkt.Desc};{produkt.Icon};{produkt.Preis};{produkt.BackgroundColor};{produkt.BorderColor};{produkt.Group};{produkt.PrintPriceonLabel}";
                 streamWriterDatabase.WriteLine(produktDaten);
             }
@@ -328,7 +309,6 @@ namespace CheckoutPro
                 ListboxMainWindowProducts.Items.Refresh();
                 GroupListBox();
 
-
             }
             myInputStream.Close();
         }
@@ -350,21 +330,6 @@ namespace CheckoutPro
         }
 
 
-        #endregion
-
-        private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
-        {
-
-            DataGridPurchase.Items.Refresh();
-            UpdateSumme();
-        }
-
-        private void ButtonClearQuittung_Click(object sender, RoutedEventArgs e)
-        {
-            classQuittungs.Clear();
-            DataGridPurchase.Items.Refresh();
-            UpdateSumme();
-        }
 
 
     }

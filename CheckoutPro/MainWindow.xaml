@@ -69,9 +69,7 @@
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,42,0" Click="ButtonHeaderSettings_Click">
                     <Icons:SymbolIcon Symbol="Settings" />
                 </Button>
-                <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,84,0" Click="ButtonHeaderInfo_Click">
-                    <Icons:SymbolIcon Symbol="Info" />
-                </Button>
+
                 <Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" HorizontalAlignment="Right" Margin="0,0,0,0" Click="ButtonExitApplication_Click">
                     <Grid>
                         <Rectangle Width="40" Height="40" RadiusX="5" RadiusY="5" Fill="Transparent"/>

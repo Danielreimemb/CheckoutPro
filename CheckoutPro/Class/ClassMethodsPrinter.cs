@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
@@ -17,18 +18,43 @@ namespace CheckoutPro.Class
         public static string Preis;
         public static bool PrintPriceonLabel;
 
-        public void Print(string lAnzahl, string lProdukt, string lPreis, bool lPrintPriceonLabel)
+        public void Print(string lAnzahl, string lProdukt, string lPreis, bool lPrintPriceonLabel, bool lPrintSeperatLabels)
         {
-            Anzahl = lAnzahl;
-            Produkt = lProdukt;
-            Preis = lPreis;
-            PrintPriceonLabel = lPrintPriceonLabel;
+            int anzahl;
+            string numberPart = Regex.Replace(lAnzahl, @"[^\d]", ""); // Alle nicht-numerischen Zeichen entfernen
+            if (!int.TryParse(numberPart, out anzahl) || anzahl <= 0)
+            {
+                throw new ArgumentException("Die Anzahl muss eine gültige positive Ganzzahl sein.");
+            }
 
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(PrintBon);
+            
 
+            if (lPrintSeperatLabels)
+            {
+                Anzahl = lAnzahl;
+                Produkt = lProdukt;
+                Preis = lPreis;
+                PrintPriceonLabel = lPrintPriceonLabel;
 
-            pd.Print();
+                for (int i = 0; i < anzahl; i++)
+                {
+                    PrintDocument pd = new PrintDocument();
+                    pd.PrintPage += new PrintPageEventHandler(PrintBon);
+                    pd.Print();
+                }
+            }
+            else
+            {
+
+                Anzahl = lAnzahl;
+                Produkt = lProdukt;
+                Preis = lPreis;
+                PrintPriceonLabel = lPrintPriceonLabel;
+
+                PrintDocument pd = new PrintDocument();
+                pd.PrintPage += new PrintPageEventHandler(PrintBon);
+                pd.Print();
+            }
         }
 
         private static void PrintBon(object sender, PrintPageEventArgs e)
