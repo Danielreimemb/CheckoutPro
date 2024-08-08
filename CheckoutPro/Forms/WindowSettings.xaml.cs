@@ -126,7 +126,7 @@ namespace CheckoutPro.Forms
             }
 
 
-            _settings.Version = "1.0.0.0";
+            _settings.Version = "1.0.0.1";
             _settings.Key = "";
             _settings.Darkmode = false;
             _settings.PrintseperatLabels = ToggleButtonPrintseperatLabels.IsChecked ?? false;

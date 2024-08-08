@@ -66,9 +66,9 @@
 
 
     </Window.Resources>
-    
-    
-    
+
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -99,7 +99,7 @@
                 <Button Name="ButtonSearchPrinter" Click="ButtonSearchPrinter_Click" Content="Suchen" Grid.Column="0" Grid.Row="1" />
                 <Button Name="ButtonSetPrinterasDefault" Click="ButtonSetPrinterasDefault_Click" Content="Übernehmen" Grid.Column="1" Grid.Row="1"/>
             </Grid>
-            
+
         </GroupBox>
 
         <GroupBox Grid.Row="3" Header="Erweiterte Einstellungen" Margin="10,0">
@@ -143,15 +143,14 @@
                 <ToggleButton Name="ToggleButtonFullscreen" Grid.Row="1" Grid.Column="2" />
                 <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="1" Grid.Column="3" Padding="10,0" Text="Vollbild"/>
 
-                
-
             </Grid>
-
-                
-
         </GroupBox>
 
-        <Button Name="ButtonSubmitSettings" Click="ButtonSubmitSettings_Click" BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Right">
+        <GroupBox Header="Info" Grid.Row="3" Margin="10,101,347,10" Grid.RowSpan="2">
+            <TextBlock Text=" Software von Daniel Reim &#10; &#10; Version 1.0.0.1 &#10; CC 2023/2024"/>
+        </GroupBox>
+
+        <Button Name="ButtonSubmitSettings" Click="ButtonSubmitSettings_Click" BorderThickness="0" Width="auto" Height="75" Background="Transparent" Grid.Row="4" Grid.Column="0"  HorizontalAlignment="Right" Margin="0,106,10,10">
             <Button.Template>
                 <ControlTemplate>
                     <Grid>
