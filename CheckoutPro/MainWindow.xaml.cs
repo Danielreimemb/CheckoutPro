@@ -124,13 +124,13 @@ namespace CheckoutPro
         private void ButtonPrintLabel_Click(object sender, RoutedEventArgs e)
         {
             _settings = ClassAppSettings.Load(SettingsFilePath);
-            bool PrintSeperateLabels = _settings.PrintseperatLabels;
+
 
 
             foreach (ClassQuittung classQuittung in DataGridPurchase.Items)
             {
                 ClassMethodsPrinter classMethodsPrinter = new ClassMethodsPrinter();
-                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis,classQuittung.PrintPriceonLabel, PrintSeperateLabels);
+                classMethodsPrinter.Print(classQuittung.Anzahl,classQuittung.Name,classQuittung.Preis,classQuittung.PrintPriceonLabel, _settings.PrintseperatLabels, _settings.Print1x);
             }
 
             classQuittungs.Clear();

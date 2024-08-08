@@ -43,6 +43,7 @@ namespace CheckoutPro.Forms
             ToggleButtonPrintseperatLabels.IsChecked = _settings.PrintseperatLabels;
             ToggleButtonSaveDatabaseonClose.IsChecked = _settings.SaveDatabaseonClose;
             ToggleButtonClearPrinterHistory.IsChecked = _settings.ClearPrinterHistory;
+            ToggleButtonPrint1x.IsChecked = _settings.Print1x;
             ToggleButtonFullscreen.IsChecked = _settings.StartFullscreen;
 
             LoadPrinters();
@@ -132,6 +133,7 @@ namespace CheckoutPro.Forms
             _settings.SaveDatabaseonClose = ToggleButtonSaveDatabaseonClose.IsChecked ?? false;
             _settings.ClearPrinterHistory = ToggleButtonClearPrinterHistory.IsChecked ?? false;
             _settings.StartFullscreen = ToggleButtonFullscreen.IsChecked ?? false;
+            _settings.Print1x = ToggleButtonPrint1x.IsChecked ?? false;
             _settings.Basicprinter = ComboBoxDrucker.Text;
 
             ClassAppSettings.Save(_settings, SettingsFilePath);

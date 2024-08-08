@@ -18,6 +18,7 @@ namespace CheckoutPro.Class
         public bool ClearPrinterHistory { get; set; }
         public string Basicprinter { get; set; }
         public bool StartFullscreen { get; set; }
+        public bool Print1x { get; set; }
 
 
         public static void Save(ClassAppSettings settings, string filePath)

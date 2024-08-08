@@ -136,8 +136,14 @@
                 <!--<ToggleButton Name="ToggleButtonDarkMode" Grid.Row="0" Grid.Column="2" IsEnabled="False" Click="ToggleButtonDarkMode_Click"/>
 <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="0" Grid.Column="3" Padding="10,0" Text="Dunkler Modus"/>-->
 
-                <ToggleButton Name="ToggleButtonFullscreen" Grid.Row="0" Grid.Column="2" />
-                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="0" Grid.Column="3" Padding="10,0" Text="Vollbild"/>
+                <ToggleButton Name="ToggleButtonPrint1x" Grid.Row="0" Grid.Column="2" />
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="0" Grid.Column="3" Padding="10,0" Text="1x auf Bon drucken"/>
+
+
+                <ToggleButton Name="ToggleButtonFullscreen" Grid.Row="1" Grid.Column="2" />
+                <TextBlock VerticalAlignment="Center" FontSize="14" Grid.Row="1" Grid.Column="3" Padding="10,0" Text="Vollbild"/>
+
+                
 
             </Grid>
 

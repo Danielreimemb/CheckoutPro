@@ -18,8 +18,13 @@ namespace CheckoutPro.Class
         public static string Preis;
         public static bool PrintPriceonLabel;
 
-        public void Print(string lAnzahl, string lProdukt, string lPreis, bool lPrintPriceonLabel, bool lPrintSeperatLabels)
+        public static bool Print1xonLabel;
+
+        public void Print(string lAnzahl, string lProdukt, string lPreis, bool lPrintPriceonLabel, bool lPrintSeperatLabels, bool lprint1x)
         {
+            Print1xonLabel = lprint1x;
+
+
             int anzahl;
             string numberPart = Regex.Replace(lAnzahl, @"[^\d]", ""); // Alle nicht-numerischen Zeichen entfernen
             if (!int.TryParse(numberPart, out anzahl) || anzahl <= 0)
@@ -29,9 +34,9 @@ namespace CheckoutPro.Class
 
             
 
-            if (lPrintSeperatLabels)
+            if (!lPrintSeperatLabels)
             {
-                Anzahl = lAnzahl;
+                Anzahl = "1x";
                 Produkt = lProdukt;
                 Preis = lPreis;
                 PrintPriceonLabel = lPrintPriceonLabel;
@@ -82,12 +87,19 @@ namespace CheckoutPro.Class
 
             float startY = (pageHeight - totalHeight) * 0.05f;
 
-            if (Anzahl != "1x")
+            if (Print1xonLabel || Anzahl != "1x")
             {
                 g.DrawString(Anzahl, boldFont, System.Drawing.Brushes.Black, anzahlX, startY);
+                g.DrawString(Produkt, largeFont, System.Drawing.Brushes.Black, produktX, startY + anzahlSize.Height + lineHeight);
+            }
+            else
+            {
+                g.DrawString(Produkt, largeFont, System.Drawing.Brushes.Black, produktX, startY + (Anzahl != "1x" ? anzahlSize.Height + lineHeight : 0));
             }
 
-            g.DrawString(Produkt, largeFont, System.Drawing.Brushes.Black, produktX, startY + (Anzahl != "1x" ? anzahlSize.Height + lineHeight : 0));
+
+
+
 
             if (PrintPriceonLabel)
             {
@@ -102,50 +114,6 @@ namespace CheckoutPro.Class
 
         }
 
-        private static void PrintTestFile(object sender, PrintPageEventArgs e)
-        {
-            string Anzahl = "2x";
-            string Produkt = "TestName";
-            string Preis = "3,00€";
 
-            Graphics g = e.Graphics;
-
-            float pageWidth = e.PageSettings.PrintableArea.Width;
-            float pageHeight = e.PageSettings.PrintableArea.Height;
-
-            Font font = new Font("Consolas", 10);
-            Font largeFont = new Font("Consolas", 18);
-            Font boldFont = new Font("Consolas", 18, FontStyle.Bold);
-
-            // Calculate text dimensions
-            SizeF anzahlSize = g.MeasureString(Anzahl, boldFont);
-            SizeF produktSize = g.MeasureString(Produkt, largeFont);
-            SizeF preisSize = g.MeasureString(Preis, boldFont);
-
-            // Calculate starting positions
-            float anzahlX = (pageWidth - anzahlSize.Width) / 2;
-            float produktX = (pageWidth - produktSize.Width) / 2;
-            float preisX = (pageWidth - preisSize.Width) / 2;
-
-            // Calculate vertical spacing
-            float lineHeight = font.GetHeight();
-
-            // Calculate the total height of the content
-            float totalHeight = anzahlSize.Height + produktSize.Height + preisSize.Height + 3 * lineHeight;
-
-            // Calculate starting y position to center the content vertically
-            float startY = (pageHeight - totalHeight) * 0.05f;
-
-            // Draw the content
-            g.DrawString(Anzahl, boldFont, System.Drawing.Brushes.Black, anzahlX, startY);
-            g.DrawString(Produkt, largeFont, System.Drawing.Brushes.Black, produktX, startY + anzahlSize.Height + lineHeight);
-            g.DrawString(Preis, boldFont, System.Drawing.Brushes.Black, preisX, startY + anzahlSize.Height + produktSize.Height + 2 * lineHeight);
-
-            // Display current date and time
-            string currentDateAndTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-            SizeF dateAndTimeSize = g.MeasureString(currentDateAndTime, font);
-            float dateAndTimeX = (pageWidth - dateAndTimeSize.Width) / 2;
-            g.DrawString(currentDateAndTime, font, System.Drawing.Brushes.Black, dateAndTimeX, startY + anzahlSize.Height + produktSize.Height + preisSize.Height + 3 * lineHeight);
-        }
     }
 }
