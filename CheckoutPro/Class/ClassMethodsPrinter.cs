@@ -17,7 +17,6 @@ namespace CheckoutPro.Class
         public static string Produkt;
         public static string Preis;
         public static bool PrintPriceonLabel;
-
         public static bool Print1xonLabel;
 
         public void Print(string lAnzahl, string lProdukt, string lPreis, bool lPrintPriceonLabel, bool lPrintSeperatLabels, bool lprint1x)
@@ -97,15 +96,10 @@ namespace CheckoutPro.Class
                 g.DrawString(Produkt, largeFont, System.Drawing.Brushes.Black, produktX, startY + (Anzahl != "1x" ? anzahlSize.Height + lineHeight : 0));
             }
 
-
-
-
-
             if (PrintPriceonLabel)
             {
                 g.DrawString(Preis, boldFont, System.Drawing.Brushes.Black, preisX, startY + (Anzahl != "1x" ? anzahlSize.Height : 0) + produktSize.Height + 2 * lineHeight);
             }
-
 
             string currentDateAndTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
             SizeF dateAndTimeSize = g.MeasureString(currentDateAndTime, font);

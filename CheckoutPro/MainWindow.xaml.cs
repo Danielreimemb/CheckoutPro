@@ -102,7 +102,7 @@ namespace CheckoutPro
 
         private void ButtonDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
-            if(ToggleButtonDeleteProduct.IsChecked == true)
+            if (ToggleButtonDeleteProduct.IsChecked == true)
             {
                 ToggleButtonEditProduct.IsChecked = false;
                 RectangleInfoManipulation.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff4747");
@@ -143,7 +143,7 @@ namespace CheckoutPro
         {
             if (ListboxMainWindowProducts.SelectedItem != null)
             {
-                if(ToggleButtonDeleteProduct.IsChecked == false && ToggleButtonEditProduct.IsChecked == false)
+                if (ToggleButtonDeleteProduct.IsChecked == false && ToggleButtonEditProduct.IsChecked == false)
                 {
                     WindowPurchaseProduct windowPurchaseProduct = new WindowPurchaseProduct();
                     windowPurchaseProduct.Show();
@@ -160,16 +160,16 @@ namespace CheckoutPro
 
                 if (ToggleButtonEditProduct.IsChecked == true && ToggleButtonDeleteProduct.IsChecked == true)
                 {
-                    ToggleButtonDeleteProduct.IsChecked = false;
                     ToggleButtonEditProduct.IsChecked = true;
+                    ToggleButtonDeleteProduct.IsChecked = false;
+                    
                 }
 
-                if(ToggleButtonDeleteProduct.IsChecked == true)
+                if (ToggleButtonDeleteProduct.IsChecked == true)
                 {
                     if (System.Windows.Forms.MessageBox.Show("Wollen Sie den Artikel löschen?", "Löschen", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                     {
                         ClassProduct product = ListboxMainWindowProducts.SelectedItem as ClassProduct;
-
                         classProducts.Remove(product);
                         ListboxMainWindowProducts.Items.Refresh();
                         GroupListBox();
@@ -188,10 +188,12 @@ namespace CheckoutPro
                     WindowProductItem.windowProductItemInstance.TextBoxName.Text = produkt.Name;
                     WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
-                    WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture); // "C", CultureInfo.CurrentCulture <- Funktioniert nicht weil der wert von string to double convertiert wird ToDo
+                    WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
                     WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
                     WindowProductItem.windowProductItemInstance.ToggleButtonPrintPriceonLabel.IsChecked = produkt.PrintPriceonLabel;
                 }
+
+
 
 
 
@@ -200,20 +202,8 @@ namespace CheckoutPro
         }
 
 
-
-
-        private string FormatPurchasel(string ProductName, string ProductPrice, string ProductCount)
-        {
-            // FormatPurchaselLine("Produktname", "3,00€", "22x");
-
-            string result = ProductCount.PadRight(4) + ProductName.PadRight(24) + ProductPrice.PadLeft(8);
-            return result;
-        }
-
-
         private void ButtonDataGridDeleteItem_Click(object sender, RoutedEventArgs e)
         {
-
             DataGridPurchase.Items.Refresh();
             UpdateSumme();
         }
@@ -226,29 +216,12 @@ namespace CheckoutPro
         }
 
 
-
-        public void UpdateSettings()
-        {
-            _settings = ClassAppSettings.Load(SettingsFilePath);
-            mainWindowInstance.WindowState = _settings.StartFullscreen ? WindowState.Maximized : WindowState.Normal;
-        }
-
-
-
-
-
-
-
-
-
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (System.Windows.Forms.MessageBox.Show("Wollen Sie das Programm beenden?", "Checkout Pro", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
             {
                 _settings = ClassAppSettings.Load(SettingsFilePath);
                 if (_settings.SaveDatabaseonClose) SaveProductstoFile();
-
                 System.Windows.Forms.Application.Exit();
             }
             else
@@ -265,11 +238,8 @@ namespace CheckoutPro
         private void SaveProductstoFile()
         {
             string filePathDatabase = "Database.csv";
-            if (!File.Exists(filePathDatabase))
-            {
-                return;
-            }
-            
+            if (!File.Exists(filePathDatabase)) return;
+
             StreamWriter streamWriterDatabase = new StreamWriter(filePathDatabase);
 
             foreach (ClassProduct produkt in ListboxMainWindowProducts.Items)
@@ -284,10 +254,8 @@ namespace CheckoutPro
         {
             
             string filePathDatabase = @"Database.csv";
-            if (!File.Exists(filePathDatabase))
-            {
-                return;
-            }
+            if (!File.Exists(filePathDatabase)) return;
+
 
             StreamReader myInputStream = new StreamReader(filePathDatabase);
             while (!myInputStream.EndOfStream)

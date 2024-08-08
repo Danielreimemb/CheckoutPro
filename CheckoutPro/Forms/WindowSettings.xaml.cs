@@ -136,8 +136,13 @@ namespace CheckoutPro.Forms
             _settings.Print1x = ToggleButtonPrint1x.IsChecked ?? false;
             _settings.Basicprinter = ComboBoxDrucker.Text;
 
+
+            MainWindow.mainWindowInstance.WindowState = _settings.StartFullscreen ? WindowState.Maximized : WindowState.Normal;
+
             ClassAppSettings.Save(_settings, SettingsFilePath);
-            MainWindow.mainWindowInstance.UpdateSettings();
+
+
+
 
 
             this.Close();

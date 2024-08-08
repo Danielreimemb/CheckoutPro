@@ -54,9 +54,6 @@
                         <Icons:SymbolIcon Symbol="Save" />
                     </Button>
 
-                    <!--<Button BorderThickness="0" Width="42" Grid.Column="0" Background="Transparent" Click="ButtonReloadProducts_Click">
-                        <Icons:SymbolIcon Symbol="ArrowClockwise" />
-                    </Button>-->
 
 
                 </StackPanel>
