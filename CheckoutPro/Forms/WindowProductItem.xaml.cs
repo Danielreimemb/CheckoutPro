@@ -23,12 +23,19 @@ namespace CheckoutPro.Forms
     public partial class WindowProductItem : Window
     {
         public static WindowProductItem windowProductItemInstance;
+        public bool EditItemactive;
+
+        public string oID;
+        public string oName;
+        public string oDesc;
+        public string oIcon;
 
         public WindowProductItem()
         {
             InitializeComponent();
             windowProductItemInstance = this;
 
+            TextblockHeader.Text = EditItemactive ? "Element bearbeiten" : "Element hinzufügen";
 
             foreach (ClassProduct produkt in MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items)
             {
@@ -36,12 +43,23 @@ namespace CheckoutPro.Forms
                 {
                     ComboBoxGruppe.Items.Add(produkt.Group);
                 }
+
             }
 
-            if(ComboBoxGruppe.Text == "Sammlung")
-            {
-                ComboBoxGruppe.SelectedIndex = 0;
-            }
+            
+
+
+            ComboBoxGruppe.SelectedIndex = ComboBoxGruppe.Text == "Sammlung" ? 0 : ComboBoxGruppe.SelectedIndex;
+
+
+
+
+
+
+
+
+
+
         }
 
 
@@ -52,6 +70,10 @@ namespace CheckoutPro.Forms
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
+
+
+
+
             ClassProduct produkt = new ClassProduct();
             produkt.Name = TextBoxName.Text;
             produkt.Desc = TextBoxDesc.Text;
@@ -62,9 +84,21 @@ namespace CheckoutPro.Forms
             produkt.Group = ComboBoxGruppe.Text;
             produkt.PrintPriceonLabel = ToggleButtonPrintPriceonLabel.IsChecked.Value;
 
+            if (this.EditItemactive)
+            {
+                MainWindow.mainWindowInstance.classProducts.RemoveAll(p => p.Name == oName);
+            }
+
+
             MainWindow.mainWindowInstance.classProducts.Add(produkt);
             MainWindow.mainWindowInstance.ListboxMainWindowProducts.Items.Refresh();
             MainWindow.mainWindowInstance.GroupListBox();
+
+
+
+
+
+
 
 
 

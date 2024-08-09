@@ -80,7 +80,7 @@ namespace CheckoutPro
             WindowProductItem productItem = new WindowProductItem();
             productItem.Show();
 
-            WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element hinzufügen";           
+            WindowProductItem.windowProductItemInstance.EditItemactive = false;
         }
 
         private void ButtonEditProduct_Click(object sender, RoutedEventArgs e)
@@ -183,19 +183,17 @@ namespace CheckoutPro
                     productItem.Show();
 
                     ClassProduct produkt = ListboxMainWindowProducts.SelectedItem as ClassProduct;
+                    WindowProductItem.windowProductItemInstance.oName = produkt.Name;
 
-                    WindowProductItem.windowProductItemInstance.TextblockHeader.Text = "Element bearbeiten";
+
                     WindowProductItem.windowProductItemInstance.TextBoxName.Text = produkt.Name;
                     WindowProductItem.windowProductItemInstance.TextBoxDesc.Text = produkt.Desc;
                     WindowProductItem.windowProductItemInstance.TextBoxIcon.Text = produkt.Icon;
                     WindowProductItem.windowProductItemInstance.TextBoxPreis.Text = produkt.Preis.ToString("C", CultureInfo.CurrentCulture);
                     WindowProductItem.windowProductItemInstance.ComboBoxGruppe.Text = produkt.Group.ToString();
                     WindowProductItem.windowProductItemInstance.ToggleButtonPrintPriceonLabel.IsChecked = produkt.PrintPriceonLabel;
+                    WindowProductItem.windowProductItemInstance.EditItemactive = true;
                 }
-
-
-
-
 
                 ListboxMainWindowProducts.SelectedItem = null;
             }
