@@ -236,7 +236,10 @@ namespace CheckoutPro
         private void SaveProductstoFile()
         {
             string filePathDatabase = "Database.csv";
-            if (!File.Exists(filePathDatabase)) return;
+            if (!File.Exists(filePathDatabase))
+            {
+                File.Create(filePathDatabase).Dispose();
+            }
 
             StreamWriter streamWriterDatabase = new StreamWriter(filePathDatabase);
 
@@ -250,10 +253,8 @@ namespace CheckoutPro
 
         private void LoadProductsfromFile()
         {
-            
             string filePathDatabase = @"Database.csv";
             if (!File.Exists(filePathDatabase)) return;
-
 
             StreamReader myInputStream = new StreamReader(filePathDatabase);
             while (!myInputStream.EndOfStream)
@@ -274,7 +275,6 @@ namespace CheckoutPro
                 classProducts.Add(product);
                 ListboxMainWindowProducts.Items.Refresh();
                 GroupListBox();
-
             }
             myInputStream.Close();
         }

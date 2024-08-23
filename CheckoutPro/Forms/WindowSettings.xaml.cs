@@ -27,8 +27,6 @@ namespace CheckoutPro.Forms
         private const string SettingsFilePath = "settings.xml";
         private ClassAppSettings _settings;
 
-
-
         public WindowSettings()
         {
             InitializeComponent();
@@ -45,47 +43,45 @@ namespace CheckoutPro.Forms
             ToggleButtonClearPrinterHistory.IsChecked = _settings.ClearPrinterHistory;
             ToggleButtonPrint1x.IsChecked = _settings.Print1x;
             ToggleButtonFullscreen.IsChecked = _settings.StartFullscreen;
-
-            LoadPrinters();
-
-
+            
+            LoadPrinters();          
         }
 
         private void LoadPrinters()
         {
-            foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+
+            try
             {
-                PrinterSettings printerSettings = new PrinterSettings
+                foreach (string printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
                 {
-                    PrinterName = printer
-                };
+                    PrinterSettings printerSettings = new PrinterSettings
+                    {
+                        PrinterName = printer
+                    };
 
-                bool isOnline = printerSettings.IsValid;
-                bool isDefault = printer.Equals(new PrinterSettings().PrinterName, StringComparison.OrdinalIgnoreCase);
+                    bool isOnline = printerSettings.IsValid;
+                    bool isDefault = printer.Equals(new PrinterSettings().PrinterName, StringComparison.OrdinalIgnoreCase);
 
 
-                if (isOnline && isDefault)
-                {
-                    ComboBoxDrucker.Items.Add(printer);
-                    ComboBoxDrucker.SelectedItem = printer;
+                    if (isOnline && isDefault)
+                    {
+                        ComboBoxDrucker.Items.Add(printer);
+                        ComboBoxDrucker.SelectedItem = printer;
+                    }
+                    //else if (isOnline)
+                    //{
+                    //    ComboBoxDrucker.Items.Add(printer + "Online");
+                    //}
+                    //else if (isDefault)
+                    //{
+                    //    ComboBoxDrucker.Items.Add(printer + "Standard");
+                    //}
                 }
-                #region Printdetails
-                //else if (isOnline)
-                //{
-                //    ComboBoxDrucker.Items.Add(printer + "Online");
-                //}
-                //else if (isDefault)
-                //{
-                //    ComboBoxDrucker.Items.Add(printer + "Standard");
-                //}
-                #endregion
+            }
+            catch
+            {
 
             }
-
-
-
-
-
         }
 
         private void ButtonSearchPrinter_Click(object sender, RoutedEventArgs e)
@@ -93,11 +89,8 @@ namespace CheckoutPro.Forms
             LoadPrinters();
         }
 
-
-
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern bool SetDefaultPrinter(string printerName);
-
 
 
         private void ButtonSetPrinterasDefault_Click(object sender, RoutedEventArgs e)
@@ -112,8 +105,6 @@ namespace CheckoutPro.Forms
             {
                 MessageBox.Show($"Fehler beim Festlegen von {ComboBoxDrucker.Text} als Standarddrucker.");
             }
-
-
         }
 
 
@@ -124,7 +115,6 @@ namespace CheckoutPro.Forms
             {
                 _settings = new ClassAppSettings();
             }
-
 
             _settings.Version = "1.0.0.1";
             _settings.Key = "";
@@ -140,10 +130,6 @@ namespace CheckoutPro.Forms
             MainWindow.mainWindowInstance.WindowState = _settings.StartFullscreen ? WindowState.Maximized : WindowState.Normal;
 
             ClassAppSettings.Save(_settings, SettingsFilePath);
-
-
-
-
 
             this.Close();
         }
